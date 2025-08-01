@@ -1,0 +1,1074 @@
+[
+  {
+    "id": "14303",
+    "name": "Atenea",
+    "title": "Diosa Atenea",
+    "image": "images/saints/sds_battleUI_yadianna_shazhi.webp",
+    "role": 5,
+    "element": 1,
+    "counters": [
+      {
+        "id": "65303",
+        "position": "back"
+      }
+    ]
+  },
+  {
+    "id": "55201",
+    "name": "Diosa de la Guerra",
+    "title": "Diosa Atenea de la Guerra",
+    "image": "images/saints/sds_battleUI_yadianna_shengyi.webp",
+    "role": 1,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55302",
+    "name": "Poseidón",
+    "title": "Poseidón",
+    "image": "images/saints/sds_battleUI_bosaidong_haihuang.webp",
+    "role": 3,
+    "element": 5,
+    "counters": [
+      {
+        "id": "55201",
+        "position": "opposite"
+      }
+    ]
+  },
+  {
+    "id": "55308",
+    "name": "Artemis",
+    "title": "Diosa de la Luna",
+    "image": "images/saints/sds_battleUI_aertuimisi_yueshen.webp",
+    "role": 3,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "65101",
+    "name": "Shun",
+    "title": "Hades",
+    "image": "images/saints/sds_battleUI_shun_mingwang.webp",
+    "role": 1,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "65206",
+    "name": "Hades",
+    "title": "Rey del Inframundo",
+    "image": "images/saints/sds_battleUI_hadisi_mingwang.webp",
+    "role": 1,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "65303",
+    "name": "Tánatos",
+    "title": "Dios de la Muerte",
+    "image": "images/saints/sds_battleUI_tanatuosi_sishen.webp",
+    "role": 3,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "65304",
+    "name": "Hypnos",
+    "title": "Dios del Sueño",
+    "image": "images/saints/sds_battleUI_xiupunuosi_shuishen.webp",
+    "role": 5,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "55101",
+    "name": "Shiryu",
+    "title": "Caballero del Dragón con Armadura Divina",
+    "image": "images/saints/sds_battleUI_zilong_shen.webp",
+    "role": 1,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55102",
+    "name": "Dohko",
+    "title": "Caballero de Oro de Libra",
+    "image": "images/saints/sds_battleUI_tonghu_shen.webp",
+    "role": 1,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55104",
+    "name": "Aldebarán",
+    "title": "Caballero Saint de Armadura Divina de Tauro",
+    "image": "images/saints/sds_battleUI_aludiba_shen.webp",
+    "role": 1,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55203",
+    "name": "Seiya",
+    "title": "Caballero de Cloth de Pegaso",
+    "image": "images/saints/sds_battleUI_xingshi_shen.webp",
+    "role": 2,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55204",
+    "name": "Aiolia",
+    "title": "Caballero de Cloth Divina de Leo",
+    "image": "images/saints/sds_battleUI_aiaoliya_shen.webp",
+    "role": 2,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55206",
+    "name": "Camus",
+    "title": "Caballero Saint de Armadura Divina de Acuario",
+    "image": "images/saints/sds_battleUI_kamiao_shen.webp",
+    "role": 2,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55303",
+    "name": "Shun",
+    "title": "Caballero de Andrómeda con armadura divina",
+    "image": "images/saints/sds_battleUI_shun_shen.webp",
+    "role": 5,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55305",
+    "name": "Hyoga",
+    "title": "Caballero de Plata de Cisne",
+    "image": "images/saints/sds_battleUI_binghe_shen.webp",
+    "role": 3,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55306",
+    "name": "Ikki",
+    "title": "Caballero de Cloth Divina de Fénix",
+    "image": "images/saints/sds_battleUI_yihui_shen.webp",
+    "role": 4,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "65205",
+    "name": "Shura",
+    "title": "Caballero en armadura divina de Capricornio",
+    "image": "images/saints/sds_battleUI_xiuluo_shen.webp",
+    "role": 2,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "65208",
+    "name": "Aaron",
+    "title": "Dios del Inframundo",
+    "image": "images/saints/sds_battleUI_yalun_mingwang.webp",
+    "role": 2,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "65307",
+    "name": "Afrodita",
+    "title": "Caballero en armadura divina de Piscis",
+    "image": "images/saints/sds_battleUI_abuluodi_shen.webp",
+    "role": 3,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "13102",
+    "name": "Shiryu",
+    "title": "Caballeros de Bronce de Dragón",
+    "image": "images/saints/sds_battleUI_zilong_huangjintianlong.webp",
+    "role": 1,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "15302",
+    "name": "Maestro Dohko",
+    "title": "Caballero de Oro de Libra",
+    "image": "images/saints/sds_battleUI_tonghu_laonian.webp",
+    "role": 5,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "33201",
+    "name": "Seiya",
+    "title": "Caballeros de Bronce de Pegaso",
+    "image": "images/saints/sds_battleUI_huangjintianma.webp",
+    "role": 2,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "33304",
+    "name": "Hyoga",
+    "title": "Caballeros de Bronce de Cisne",
+    "image": "images/saints/sds_battleUI_binghe_jinbainiao.webp",
+    "role": 3,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "43303",
+    "name": "Shun",
+    "title": "Caballeros de Bronce de Andrómeda",
+    "image": "images/saints/sds_battleUI_shun_jinxiannv.webp",
+    "role": 5,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "45201",
+    "name": "Shion",
+    "title": "Shion",
+    "image": "images/saints/sds_battleUI_jiaohuang_shiang.webp",
+    "role": 2,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "55205",
+    "name": "Touma",
+    "title": "Ángel - Touma",
+    "image": "images/saints/sds_battleUI_douma_tiandou.webp",
+    "role": 4,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55309",
+    "name": "Calisto",
+    "title": "Líder de Satellites",
+    "image": "images/saints/sds_battleUI_yueweishi_kalisituo.webp",
+    "role": 5,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "65306",
+    "name": "Hécate",
+    "title": "Bruja de la Luna",
+    "image": "images/saints/sds_battleUI_yuemonv_hekatui.webp",
+    "role": 5,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "14203",
+    "name": "Niobe",
+    "title": "Espectro de Deep",
+    "image": "images/saints/sds_battleUI_niaobi_dianxing.webp",
+    "role": 4,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "14204",
+    "name": "Charon",
+    "title": "Espectro de Acheron",
+    "image": "images/saints/sds_battleUI_kalong_tianjian.webp",
+    "role": 2,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "25101",
+    "name": "Shion",
+    "title": "Espectro de Aries",
+    "image": "images/saints/sds_battleUI_shiang_baiyang.webp",
+    "role": 1,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "34202",
+    "name": "Helfit",
+    "title": "Estrella Celeste de la Agilidad",
+    "image": "images/saints/sds_battleUI_xilufeidu_tianjie.webp",
+    "role": 4,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "34303",
+    "name": "Myū",
+    "title": "Papillón",
+    "image": "images/saints/sds_battleUI_miao_diyaoxing.webp",
+    "role": 5,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "44102",
+    "name": "Zelos",
+    "title": "Estrella Terrestre de la Rareza",
+    "image": "images/saints/sds_battleUI_zheluosi_diqixing.webp",
+    "role": 1,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "44202",
+    "name": "Raimi",
+    "title": "Estrella de tierra rastrera",
+    "image": "images/saints/sds_battleUI_laimi_difuxing.webp",
+    "role": 4,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "44203",
+    "name": "Faraón",
+    "title": "Faraón",
+    "image": "images/saints/sds_battleUI_falaao_tianshou.webp",
+    "role": 4,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "44204",
+    "name": "Giganto",
+    "title": "Estrella Terrestre de la Violencia",
+    "image": "images/saints/sds_battleUI_gujiaduo_dibaoxing.webp",
+    "role": 2,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "44302",
+    "name": "Queen",
+    "title": "Caballero de Oro de Libra",
+    "image": "images/saints/sds_battleUI_kuien_tianmo.webp",
+    "role": 3,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "65202",
+    "name": "Radamantis",
+    "title": "Wivern",
+    "image": "images/saints/sds_battleUI_ladamandisi_tianmeng.webp",
+    "role": 2,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "65203",
+    "name": "Minos",
+    "title": "Estrella Celeste de la Dignidad",
+    "image": "images/saints/sds_battleUI_minuosi_tiangui.webp",
+    "role": 4,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "65207",
+    "name": "Suikyo",
+    "title": "Estrella Celeste de la Majestuosidad",
+    "image": "images/saints/sds_battleUI_shuijing_tianxiong.webp",
+    "role": 4,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "65302",
+    "name": "Pandora",
+    "title": "Líder del Inframundo",
+    "image": "images/saints/sds_battleUI_panduola_changfu.webp",
+    "role": 5,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "65305",
+    "name": "Aiacos",
+    "title": "Tres Lideres del Inframundo",
+    "image": "images/saints/sds_battleUI_aiyagesi_tianxiong.webp",
+    "role": 3,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "14202",
+    "name": "Io",
+    "title": "Scylla",
+    "image": "images/saints/sds_battleUI_yiao_liuyaoshou.webp",
+    "role": 4,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "14304",
+    "name": "Tetis",
+    "title": "Sirena",
+    "image": "images/saints/sds_battleUI_didisi_meirenyu.webp",
+    "role": 5,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "24202",
+    "name": "Krishna",
+    "title": "Chrysaor",
+    "image": "images/saints/sds_battleUI_kelixiula_haihuangzi.webp",
+    "role": 2,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "34101",
+    "name": "Bian",
+    "title": "Hipocampo",
+    "image": "images/saints/sds_battleUI_baian_haima.webp",
+    "role": 1,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "34201",
+    "name": "Isaac",
+    "title": "Kraken",
+    "image": "images/saints/sds_battleUI_aierzhake_haimoshou.webp",
+    "role": 2,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "44301",
+    "name": "Caça",
+    "title": "Lymnades",
+    "image": "images/saints/sds_battleUI_kasa_haihuanshou.webp",
+    "role": 5,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "55301",
+    "name": "Sorrento",
+    "title": "Siren",
+    "image": "images/saints/sds_battleUI_sulante_haimonv.webp",
+    "role": 5,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "65201",
+    "name": "Kanon",
+    "title": "Kanon de dragón marino",
+    "image": "images/saints/sds_battleUI_jialong_hailong.webp",
+    "role": 4,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "14201",
+    "name": "Milo",
+    "title": "Caballero Saint de Oro de Escorpio",
+    "image": "images/saints/sds_battleUI_miluo_tianxie.webp",
+    "role": 4,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "14301",
+    "name": "Deathmask",
+    "title": "Caballero Saint de Oro de Cáncer",
+    "image": "images/saints/sds_battleUI_disimasike_juxie.webp",
+    "role": 3,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "14302",
+    "name": "Afrodita",
+    "title": "Caballero Saint de Oro de Piscis",
+    "image": "images/saints/sds_battleUI_abuluodi_shuangyu.webp",
+    "role": 3,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "15101",
+    "name": "Shiryu",
+    "title": "Caballero Saint de Oro de Libra",
+    "image": "images/saints/sds_battleUI_zilong_tiancheng.webp",
+    "role": 1,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "15202",
+    "name": "Cardinale",
+    "title": "Caballero Saint de Oro de Piscis",
+    "image": "images/saints/sds_battleUI_shuangyu_kadinaer.webp",
+    "role": 4,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "15303",
+    "name": "Deathtoll",
+    "title": "Caballero de Oro de Libra",
+    "image": "images/saints/sds_battleUI_disituoer_juxie.webp",
+    "role": 3,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "24201",
+    "name": "Aiolia",
+    "title": "Caballero Saint de Oro de Leo",
+    "image": "images/saints/sds_battleUI_aiaoliya_shizi.webp",
+    "role": 2,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "24203",
+    "name": "Káiser",
+    "title": "Caballero de Oro de Leo",
+    "image": "images/saints/sds_battleUI_kaisa_shizi.webp",
+    "role": 2,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "24301",
+    "name": "Mu",
+    "title": "Caballero Saint de Oro de Aries",
+    "image": "images/saints/sds_battleUI_mu_baiyang.webp",
+    "role": 5,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "25201",
+    "name": "Seiya",
+    "title": "Caballero Saint de Oro de Sagitario",
+    "image": "images/saints/sds_battleUI_xingshi_sheshou.webp",
+    "role": 4,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "25301",
+    "name": "Aiolos",
+    "title": "Caballero Saint de Oro de Sagitario",
+    "image": "images/saints/sds_battleUI_aieluosi_sheshou.webp",
+    "role": 4,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "25302",
+    "name": "Ikki",
+    "title": "Caballero Saint de Oro de Leo",
+    "image": "images/saints/sds_battleUI_yihui_shizi.webp",
+    "role": 3,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "25303",
+    "name": "Gestalt",
+    "title": "Caballero Saint de Oro de Sagitario",
+    "image": "images/saints/sds_battleUI_geshita_sheshou.webp",
+    "role": 4,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "34301",
+    "name": "Camus",
+    "title": "Cabellero Saint de Oro de Acuario",
+    "image": "images/saints/sds_battleUI_kamiao_shuiping.webp",
+    "role": 3,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "34304",
+    "name": "Mystoria",
+    "title": "Cabellero Saint de Oro de Acuario",
+    "image": "images/saints/sds_battleUI_misituoliya_shuiping.webp",
+    "role": 4,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "35101",
+    "name": "Dohko",
+    "title": "Caballero Saint de Oro de Libra",
+    "image": "images/saints/sds_battleUI_tonghu_tiancheng.webp",
+    "role": 1,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "35201",
+    "name": "Saga",
+    "title": "Caballero Saint de Oro de Géminis",
+    "image": "images/saints/sds_battleUI_sajia_shuangzi.webp",
+    "role": 2,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "35301",
+    "name": "Hyoga",
+    "title": "Cabellero Saint de Oro de Acuario",
+    "image": "images/saints/sds_battleUI_binghe_shuiping.webp",
+    "role": 3,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "44101",
+    "name": "Aldebaran",
+    "title": "Caballero Saint de Oro de Tauro",
+    "image": "images/saints/sds_battleUI_jinniu_aludiba_jinniu.webp",
+    "role": 1,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "44103",
+    "name": "Ox",
+    "title": "Caballero Saint de Oro de Tauro",
+    "image": "images/saints/sds_battleUI_aokesi_jinniu.webp",
+    "role": 1,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "44201",
+    "name": "Shura",
+    "title": "Caballero Saint de Oro de Capricornio",
+    "image": "images/saints/sds_battleUI_xiuluo_shanyang.webp",
+    "role": 4,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "44303",
+    "name": "Écarlate",
+    "title": "Caballero Saint de Oro de Escorpio",
+    "image": "images/saints/sds_battleUI_aikalate_tianxie.webp",
+    "role": 3,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "45202",
+    "name": "Izou",
+    "title": "Caballero Saint de Oro de Capricornio",
+    "image": "images/saints/sds_battleUI_yicang_mojie.webp",
+    "role": 2,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "45301",
+    "name": "Shaka",
+    "title": "Caballero Saint de Oro de Virgo",
+    "image": "images/saints/sds_battleUI_shajia_chunv.webp",
+    "role": 3,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "45302",
+    "name": "Shun",
+    "title": "Caballero Saint de Oro de Virgo",
+    "image": "images/saints/sds_battleUI_shun_chunv.webp",
+    "role": 3,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "55103",
+    "name": "Shijima",
+    "title": "Caballero de Oro de Virgo",
+    "image": "images/saints/sds_battleUI_shijingmo_chunv.webp",
+    "role": 1,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55202",
+    "name": "Kanon",
+    "title": "Caballero Saint de Oro de Géminis",
+    "image": "images/saints/sds_battleUI_jialong_shuangzi.webp",
+    "role": 4,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55304",
+    "name": "Shaka Arayashiki",
+    "title": "Caballero de Oro de Virgo",
+    "image": "images/saints/sds_battleUI_shajia_alaiyeshi.webp",
+    "role": 3,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55307",
+    "name": "Odysseus",
+    "title": "Caballero de Cloth Divina de Fénix",
+    "image": "images/saints/sds_battleUI_aodexiusi_shefu.webp",
+    "role": 5,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "55310",
+    "name": "Shion",
+    "title": "Caballero Saint de Armadura Divina de Aries",
+    "image": "images/saints/sds_battleUI_ndshiang_baiyang.webp",
+    "role": 5,
+    "element": 5,
+    "counters": []
+  },
+  {
+    "id": "65204",
+    "name": "Caín·Abel",
+    "title": "Caballero Saint de Oro de Géminis",
+    "image": "images/saints/sds_battleUI_gaiyin_shuangzi.webp",
+    "role": 4,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "65301",
+    "name": "Saga Maligno",
+    "title": "Caballero Saint de Oro de Géminis",
+    "image": "images/saints/sds_battleUI_sajia_shuangzie.webp",
+    "role": 3,
+    "element": 6,
+    "counters": []
+  },
+  {
+    "id": "13101",
+    "name": "Moses",
+    "title": "Caballero Saint de Plata de Ballena",
+    "image": "images/saints/sds_battleUI_moxisi_baijing.webp",
+    "role": 1,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "13201",
+    "name": "Marin",
+    "title": "Caballero Saint de Plata de Águila",
+    "image": "images/saints/sds_battleUI_moling_tianying.webp",
+    "role": 2,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "15301",
+    "name": "Orfeo",
+    "title": "Caballero de Plata de Lira",
+    "image": "images/saints/sds_battleUI_aolufei_tianqin.webp",
+    "role": 3,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "23101",
+    "name": "Algethi",
+    "title": "Caballero Saint de Plata de Hércules",
+    "image": "images/saints/sds_battleUI_yalujiedi_wuxian.webp",
+    "role": 1,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "23201",
+    "name": "Shaina",
+    "title": "Caballero Saint de Plata de Ofiuco",
+    "image": "images/saints/sds_battleUI_shaerna_shefuxin.webp",
+    "role": 4,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "23202",
+    "name": "Dante",
+    "title": "Caballero Saint de Plata de Cerbero",
+    "image": "images/saints/sds_battleUI_dadi_diyuquan.webp",
+    "role": 2,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "23301",
+    "name": "Babel",
+    "title": "Caballero Saint de Plata de Centauro",
+    "image": "images/saints/sds_battleUI_babie_banrenma.webp",
+    "role": 3,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "33101",
+    "name": "Misty",
+    "title": "Caballero Saint de Plata de Lagarto",
+    "image": "images/saints/sds_battleUI_meisidi_xiyi.webp",
+    "role": 5,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "33301",
+    "name": "Jamian",
+    "title": "Caballero Saint de Plata de Cuervo",
+    "image": "images/saints/sds_battleUI_jimian_wuya.webp",
+    "role": 3,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "33302",
+    "name": "Dio",
+    "title": "Caballero Saint de Plata de Musca",
+    "image": "images/saints/sds_battleUI_diao_yinying.webp",
+    "role": 2,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "33303",
+    "name": "Ptolomeo",
+    "title": "Caballero Saint de Plata de Sagitta",
+    "image": "images/saints/sds_battleUI_delimi_tianjian.webp",
+    "role": 4,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "35202",
+    "name": "Suikyo",
+    "title": "Suikyo de Crater",
+    "image": "images/saints/sds_battleUI_shuijing_jujue.webp",
+    "role": 2,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "43101",
+    "name": "Algol",
+    "title": "Caballero Saint de Plata de Perseo",
+    "image": "images/saints/sds_battleUI_yalugelu_xianying.webp",
+    "role": 1,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "43201",
+    "name": "Sirius",
+    "title": "Caballero Saint de Plata de Can Mayor",
+    "image": "images/saints/sds_battleUI_shiliwu_juquan.webp",
+    "role": 2,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "43301",
+    "name": "Asterion",
+    "title": "Caballero Saint de Plata de Lebreles",
+    "image": "images/saints/sds_battleUI_yadilian_liequan.webp",
+    "role": 5,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "43302",
+    "name": "Capella",
+    "title": "Caballero Saint de Plata de Auriga",
+    "image": "images/saints/sds_battleUI_jiabila_yufu.webp",
+    "role": 3,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "12101",
+    "name": "Shiryu",
+    "title": "Caballeros de Bronce de Dragón",
+    "image": "images/saints/sds_battleUI_zilong_tianlong.webp",
+    "role": 1,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "12102",
+    "name": "Dragón Oscuro",
+    "title": "Caballero Negro Saint de Dragón",
+    "image": "images/saints/sds_battleUI_anheitianlong.webp",
+    "role": 1,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "12201",
+    "name": "Jabu",
+    "title": "Caballeros de Bronce de Unicornio",
+    "image": "images/saints/sds_battleUI_xiewu_dujiaoshou.webp",
+    "role": 2,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "12202",
+    "name": "Ichi",
+    "title": "Caballeros de Bronce de Hydra",
+    "image": "images/saints/sds_battleUI_shi_shuishe.webp",
+    "role": 4,
+    "element": 1,
+    "counters": []
+  },
+  {
+    "id": "22201",
+    "name": "Ikki",
+    "title": "Caballeros de Bronce de Fénix",
+    "image": "images/saints/sds_battleUI_yihui_fenghuang.webp",
+    "role": 2,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "22202",
+    "name": "Pegaso Oscuro",
+    "title": "Caballero Negro Saint de Pegaso",
+    "image": "images/saints/sds_battleUI_anheitianma.webp",
+    "role": 4,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "22301",
+    "name": "Ban",
+    "title": "Caballeros de Bronce de Leoncillo",
+    "image": "images/saints/sds_battleUI_man_youshi.webp",
+    "role": 3,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "32301",
+    "name": "Hyoga",
+    "title": "Caballeros de Bronce de Cisne",
+    "image": "images/saints/sds_battleUI_binghe_bainiao.webp",
+    "role": 3,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "32302",
+    "name": "Nachi",
+    "title": "Caballeros de Bronce de Lobo",
+    "image": "images/saints/sds_battleUI_nazhi_chailang.webp",
+    "role": 5,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "32303",
+    "name": "Cisne Oscuro",
+    "title": "Caballero Negro Saint de Cisne",
+    "image": "images/saints/sds_battleUI_anheibainiao.webp",
+    "role": 3,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "33203",
+    "name": "Tenma",
+    "title": "",
+    "image": "images/saints/sds_battleUI_tianma_tianma.webp",
+    "role": 2,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "34302",
+    "name": "June",
+    "title": "Caballeros de Bronce de Camaleón",
+    "image": "images/saints/sds_battleUI_zhenni_bianselong.webp",
+    "role": 5,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "42101",
+    "name": "Geki",
+    "title": "Caballeros de Bronce de Osa Mayor",
+    "image": "images/saints/sds_battleUI_xi_daxiong.webp",
+    "role": 1,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "42301",
+    "name": "Shun",
+    "title": "Caballeros de Bronce de Andrómeda",
+    "image": "images/saints/sds_battleUI_shun_xiannv.webp",
+    "role": 5,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "42302",
+    "name": "Andrómeda Oscuro",
+    "title": "Caballero Negro Saint de Andrómeda",
+    "image": "images/saints/sds_battleUI_anheixiannv.webp",
+    "role": 5,
+    "element": 4,
+    "counters": []
+  },
+  {
+    "id": "52201",
+    "name": "Seiya",
+    "title": "Caballeros de Bronce de Pegaso",
+    "image": "images/saints/sds_battleUI_xingshi_tianma.webp",
+    "role": 2,
+    "element": 3,
+    "counters": []
+  },
+  {
+    "id": "62201",
+    "name": "Fénix Oscuro",
+    "title": "Caballero Negro Saint de Fénix",
+    "image": "images/saints/sds_battleUI_anheifenghuang.webp",
+    "role": 4,
+    "element": 2,
+    "counters": []
+  },
+  {
+    "id": "34203",
+    "name": "Scoumoune",
+    "title": "La Francotiradora de la Luna",
+    "image": "images/saints/sds_battleUI_lasikumeng_yueweishi.webp",
+    "role": 4,
+    "element": 3,
+    "counters": []
+  }
+]
