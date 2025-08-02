@@ -6,6 +6,7 @@ import CharacterGrid from './components/CharacterGrid';
 import SearchAndFilters from './components/SearchAndFilters';
 import JsonEditor from './components/JsonEditor';
 import ModalsContainer from './components/ModalsContainer';
+import Navbar from './components/Navbar';
 
 const App = () => {
   // Estado con valores iniciales desde localStorage
@@ -391,37 +392,17 @@ const App = () => {
         darkMode ? "dark bg-gray-900" : "bg-gray-50"
       }`}
     >
-      <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 sm:mb-8 gap-4">
-          <h1 className="text-2xl sm:text-4xl font-bold text-gray-800 dark:text-white text-center sm:text-left">
-            {/* use this as logo https://saintseiya.wdyxgames.com/img/home/en/logo.png */}
-            <img src="https://saintseiya.wdyxgames.com/img/home/en/logo.png" alt="Logo" className="h-12" />
-          </h1>
-          <div className="flex flex-wrap gap-2 sm:gap-4 justify-center">
-            <button
-              onClick={() => setShowJsonEditor(!showJsonEditor)}
-              className="flex items-center gap-2 px-3 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm"
-            >
-              <Edit size={16} />
-              <span className="hidden sm:inline">Editor JSON</span>
-            </button>
-            <button
-              onClick={() => setShowTeamBuilder(!showTeamBuilder)}
-              className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
-            >
-              <Users size={16} />
-              <span className="hidden sm:inline">Constructor de Equipos</span>
-            </button>
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-            >
-              {darkMode ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
-          </div>
-        </div>
+      {/* Navbar */}
+      <Navbar
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        showJsonEditor={showJsonEditor}
+        setShowJsonEditor={setShowJsonEditor}
+        showTeamBuilder={showTeamBuilder}
+        setShowTeamBuilder={setShowTeamBuilder}
+      />
 
+      <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
         {/* JSON Editor Panel */}
         {showJsonEditor && (
           <div className="mb-8 p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">

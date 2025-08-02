@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Eye, Users, Target, Heart } from "lucide-react";
+import { Eye, Users, Target, Star } from "lucide-react";
 
 const CharacterCard = ({
   character,
@@ -34,7 +34,7 @@ const CharacterCard = ({
     <div
       className={`bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-102 cursor-move border ${
         character.isFavorite 
-          ? 'border-pink-400 dark:border-pink-500 shadow-pink-300/30 dark:shadow-pink-500/30' 
+          ? 'border-yellow-400 dark:border-yellow-500 shadow-yellow-300/30 dark:shadow-yellow-500/30' 
           : 'border-gray-100 dark:border-gray-700'
       } hover:border-blue-300 dark:hover:border-blue-500 group`}
       draggable={showTeamBuilder}
@@ -55,11 +55,11 @@ const CharacterCard = ({
 
         {/* Favorite Badge */}
         {character.isFavorite && (
-          <div className="absolute top-2 left-12 bg-gradient-to-br from-pink-400 via-pink-500 to-rose-500 text-white px-2 py-1 rounded-lg text-xs font-bold shadow-xl border-2 border-pink-300 transform transition-all duration-200" 
+          <div className="absolute top-2 left-12 bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-500 text-white px-2 py-1 rounded-lg text-xs font-bold shadow-xl border-2 border-yellow-300 transform transition-all duration-200" 
                style={{ 
-                 boxShadow: '0 4px 12px rgba(236, 72, 153, 0.4), inset 0 1px 0 rgba(255,255,255,0.3)'
+                 boxShadow: '0 4px 12px rgba(255, 193, 7, 0.4), inset 0 1px 0 rgba(255,255,255,0.3)'
                }}>
-            <Heart size={10} className="inline fill-current" />
+            <Star size={10} className="inline fill-current" />
           </div>
         )}
 
@@ -130,12 +130,12 @@ const CharacterCard = ({
             }}
             className={`ml-2 p-1 rounded-full transition-all duration-200 hover:scale-110 ${
               character.isFavorite
-                ? 'text-pink-500 hover:text-pink-600 bg-pink-50 dark:bg-pink-900/20 hover:bg-pink-100 dark:hover:bg-pink-900/30'
-                : 'text-gray-400 hover:text-pink-500 hover:bg-pink-50 dark:hover:bg-pink-900/20'
+                ? 'text-yellow-500 hover:text-yellow-600 bg-yellow-50 dark:bg-yellow-900/20 hover:bg-yellow-100 dark:hover:bg-yellow-900/30'
+                : 'text-gray-400 hover:text-yellow-500 hover:bg-yellow-50 dark:hover:bg-yellow-900/20'
             }`}
             title={character.isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
           >
-            <Heart size={14} className={character.isFavorite ? 'fill-current' : ''} />
+            <Star size={14} className={character.isFavorite ? 'fill-current' : ''} />
           </button>
         </div>
 

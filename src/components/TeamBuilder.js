@@ -1,5 +1,5 @@
 import React from "react";
-import { Shield, Sword, Target, Save, Search, Filter, Image as ImageIcon } from "lucide-react";
+import { Shield, Sword, Target, Save, Search, Filter, Image as ImageIcon, X, Star } from "lucide-react";
 import TeamPosition from './TeamPosition';
 import { getCounterSuggestions } from '../utils/counterLogic';
 import { exportTeamAsImage } from '../utils/imageExport';
@@ -52,7 +52,7 @@ const TeamBuilder = ({
       
       {/* Characters Grid - Show first when team building */}
       <div className="mb-8">
-        <div className="flex flex-col sm:flex-row gap-3 max-w-6xl mx-auto mb-4">
+        <div className="flex gap-3 max-w-6xl mx-auto mb-4">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
             <input
@@ -60,72 +60,85 @@ const TeamBuilder = ({
               placeholder="Buscar santos para agregar al equipo..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-10 pr-10 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
+            {(searchTerm || roleFilter || elementFilter) && (
+              <button
+                onClick={() => {
+                  setSearchTerm("");
+                  setRoleFilter("");
+                  setElementFilter("");
+                }}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                title="Limpiar filtros"
+              >
+                <X size={18} />
+              </button>
+            )}
           </div>
         </div>
 
         {/* Quick Filter Icons */}
-        <div className="flex flex-wrap gap-4 justify-center mb-4">
+        <div className="flex flex-col gap-4 max-w-6xl mx-auto mb-4">
           {/* Role Filters */}
-          <div className="flex flex-col items-center gap-2">
-            <h5 className="text-sm font-semibold text-gray-700 dark:text-gray-300">Filtrar por Rol:</h5>
-            <div className="flex flex-wrap gap-2">
+          <div>
+            <h5 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Filtrar por Rol:</h5>
+            <div className="flex gap-1 justify-between sm:gap-2 sm:justify-center sm:flex-wrap">
               <button
                 onClick={() => setRoleFilter("")}
-                className={`p-2 rounded-lg border-2 transition-all ${
+                className={`flex-1 sm:flex-none p-2 rounded-lg border-2 transition-all ${
                   roleFilter === "" 
                     ? "border-yellow-400 bg-yellow-50 dark:bg-yellow-900/20 shadow-lg shadow-yellow-400/50" 
                     : "border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500"
                 }`}
                 title="Todos los Roles"
               >
-                <img src="/images/ui/All.png" alt="Todos" className="w-6 h-6" />
+                <img src="/images/ui/All.png" alt="Todos" className="w-6 h-6 sm:w-8 sm:h-8 mx-auto" />
               </button>
               {Object.entries(roleNames).map(([key, value]) => (
                 <button
                   key={key}
                   onClick={() => setRoleFilter(key)}
-                  className={`p-2 rounded-lg border-2 transition-all ${
+                  className={`flex-1 sm:flex-none p-2 rounded-lg border-2 transition-all ${
                     roleFilter === key 
                       ? "border-yellow-400 bg-yellow-50 dark:bg-yellow-900/20 shadow-lg shadow-yellow-400/50" 
                       : "border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500"
                   }`}
                   title={value}
                 >
-                  <RoleIcon role={parseInt(key)} className="w-6 h-6" />
+                  <RoleIcon role={parseInt(key)} className="w-6 h-6 sm:w-8 sm:h-8 mx-auto" />
                 </button>
               ))}
             </div>
           </div>
           
           {/* Element Filters */}
-          <div className="flex flex-col items-center gap-2">
-            <h5 className="text-sm font-semibold text-gray-700 dark:text-gray-300">Filtrar por Elemento:</h5>
-            <div className="flex flex-wrap gap-2">
+          <div>
+            <h5 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Filtrar por Elemento:</h5>
+            <div className="flex gap-1 justify-between sm:gap-2 sm:justify-center sm:flex-wrap">
               <button
                 onClick={() => setElementFilter("")}
-                className={`p-2 rounded-lg border-2 transition-all ${
+                className={`flex-1 sm:flex-none p-2 rounded-lg border-2 transition-all ${
                   elementFilter === "" 
                     ? "border-yellow-400 bg-yellow-50 dark:bg-yellow-900/20 shadow-lg shadow-yellow-400/50" 
                     : "border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500"
                 }`}
                 title="Todos los Elementos"
               >
-                <img src="/images/ui/All.png" alt="Todos" className="w-6 h-6" />
+                <img src="/images/ui/All.png" alt="Todos" className="w-6 h-6 sm:w-8 sm:h-8 mx-auto" />
               </button>
               {Object.entries(elementNames).map(([key, value]) => (
                 <button
                   key={key}
                   onClick={() => setElementFilter(key)}
-                  className={`p-2 rounded-lg border-2 transition-all ${
+                  className={`flex-1 sm:flex-none p-2 rounded-lg border-2 transition-all ${
                     elementFilter === key 
                       ? "border-yellow-400 bg-yellow-50 dark:bg-yellow-900/20 shadow-lg shadow-yellow-400/50" 
                       : "border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500"
                   }`}
                   title={value}
                 >
-                  <ElementIcon element={parseInt(key)} className="w-6 h-6" />
+                  <ElementIcon element={parseInt(key)} className="w-6 h-6 sm:w-8 sm:h-8 mx-auto" />
                 </button>
               ))}
             </div>
@@ -140,7 +153,7 @@ const TeamBuilder = ({
               className="relative group cursor-pointer bg-white dark:bg-gray-800 rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 border border-gray-100 dark:border-gray-600"
               draggable
               onDragStart={(e) => handleDragStart(e, character)}
-              title={character.name}
+              title={`${character.name} - Counters: ${character.counters?.length || 0}`}
             >
               <img
                 src={character.image}
@@ -149,11 +162,24 @@ const TeamBuilder = ({
               />
               <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 rounded-b opacity-0 group-hover:opacity-100 transition-opacity">
                 <p className="truncate text-center">{character.name}</p>
+                <p className="text-center text-xs">Counters: {character.counters?.length || 0}</p>
               </div>
               <div className="absolute top-1 right-1 flex gap-1">
                 <RoleIcon role={character.role} className="w-3 h-3" />
                 <ElementIcon element={character.element} className="w-3 h-3" />
               </div>
+              {/* Counter indicator */}
+              {character.counters && character.counters.length > 0 && (
+                <div className="absolute top-1 left-1 bg-green-500 text-white text-xs px-1 rounded-full text-center min-w-[16px] h-4 flex items-center justify-center">
+                  {character.counters.length}
+                </div>
+              )}
+              {/* Favorite indicator */}
+              {character.isFavorite && (
+                <div className="absolute top-1 left-1 bg-yellow-400 text-white rounded-full p-0.5">
+                  <Star size={8} fill="currentColor" />
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -385,11 +411,125 @@ const TeamBuilder = ({
           Sugerencias de Counters
         </h4>
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Counter suggestions sections would go here */}
-          {/* This section is quite large, so I'll keep it abbreviated for now */}
-          <div className="text-center text-gray-500 dark:text-gray-400">
-            Counter suggestions will be displayed here based on enemy team composition
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* My Team Counters */}
+          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+            <h5 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-4 text-center">
+              Counters de Mi Equipo
+            </h5>
+            <div className="space-y-3">
+              {[...team.front, ...team.back].filter(Boolean).map((character, index) => (
+                <div key={`my-counter-${character.id}-${index}`} className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-blue-200 dark:border-blue-700">
+                  <div className="flex items-center gap-3 mb-2">
+                    <img
+                      src={character.image}
+                      alt={character.name}
+                      className="w-10 h-10 rounded-lg object-cover"
+                    />
+                    <div className="flex-1">
+                      <h6 className="font-semibold text-sm text-gray-800 dark:text-white">{character.name}</h6>
+                      <p className="text-xs text-gray-600 dark:text-gray-400">
+                        {character.counters?.length || 0} counters disponibles
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {character.counters && character.counters.length > 0 ? (
+                    <div className="flex flex-wrap gap-1">
+                      {character.counters.slice(0, 6).map((counterData, counterIndex) => {
+                        const counter = characters.find(c => c.id === counterData.id);
+                        return counter ? (
+                          <div key={`counter-${counterData.id}-${counterIndex}`} className="relative group">
+                            <img
+                              src={counter.image}
+                              alt={counter.name}
+                              className="w-8 h-8 rounded object-cover border-2 border-white dark:border-gray-600 hover:scale-110 transition-transform"
+                              title={`${counter.name} (${counterData.position})`}
+                            />
+                            <div className="absolute -bottom-1 -right-1 bg-purple-500 text-white text-xs px-1 rounded text-center min-w-[12px] h-3 flex items-center justify-center leading-none">
+                              {counterData.position.charAt(0).toUpperCase()}
+                            </div>
+                          </div>
+                        ) : null;
+                      })}
+                      {character.counters.length > 6 && (
+                        <div className="w-8 h-8 rounded bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-xs font-bold text-gray-600 dark:text-gray-300">
+                          +{character.counters.length - 6}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <p className="text-xs text-gray-500 dark:text-gray-400 italic">Sin counters configurados</p>
+                  )}
+                </div>
+              ))}
+              
+              {[...team.front, ...team.back].filter(Boolean).length === 0 && (
+                <div className="text-center text-gray-500 dark:text-gray-400 py-8">
+                  <p>Agrega personajes a tu equipo para ver sus counters</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Enemy Team Counters */}
+          <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4">
+            <h5 className="text-lg font-semibold text-red-600 dark:text-red-400 mb-4 text-center">
+              Counters del Equipo Enemigo
+            </h5>
+            <div className="space-y-3">
+              {[...enemyTeam.front, ...enemyTeam.back].filter(Boolean).map((character, index) => (
+                <div key={`enemy-counter-${character.id}-${index}`} className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-red-200 dark:border-red-700">
+                  <div className="flex items-center gap-3 mb-2">
+                    <img
+                      src={character.image}
+                      alt={character.name}
+                      className="w-10 h-10 rounded-lg object-cover"
+                    />
+                    <div className="flex-1">
+                      <h6 className="font-semibold text-sm text-gray-800 dark:text-white">{character.name}</h6>
+                      <p className="text-xs text-gray-600 dark:text-gray-400">
+                        {character.counters?.length || 0} counters disponibles
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {character.counters && character.counters.length > 0 ? (
+                    <div className="flex flex-wrap gap-1">
+                      {character.counters.slice(0, 6).map((counterData, counterIndex) => {
+                        const counter = characters.find(c => c.id === counterData.id);
+                        return counter ? (
+                          <div key={`enemy-counter-${counterData.id}-${counterIndex}`} className="relative group">
+                            <img
+                              src={counter.image}
+                              alt={counter.name}
+                              className="w-8 h-8 rounded object-cover border-2 border-white dark:border-gray-600 hover:scale-110 transition-transform"
+                              title={`${counter.name} (${counterData.position})`}
+                            />
+                            <div className="absolute -bottom-1 -right-1 bg-purple-500 text-white text-xs px-1 rounded text-center min-w-[12px] h-3 flex items-center justify-center leading-none">
+                              {counterData.position.charAt(0).toUpperCase()}
+                            </div>
+                          </div>
+                        ) : null;
+                      })}
+                      {character.counters.length > 6 && (
+                        <div className="w-8 h-8 rounded bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-xs font-bold text-gray-600 dark:text-gray-300">
+                          +{character.counters.length - 6}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <p className="text-xs text-gray-500 dark:text-gray-400 italic">Sin counters configurados</p>
+                  )}
+                </div>
+              ))}
+              
+              {[...enemyTeam.front, ...enemyTeam.back].filter(Boolean).length === 0 && (
+                <div className="text-center text-gray-500 dark:text-gray-400 py-8">
+                  <p>Agrega personajes al equipo enemigo para ver sus counters</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
