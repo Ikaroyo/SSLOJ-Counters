@@ -6,6 +6,7 @@
     "image": "images/saints/sds_battleUI_yadianna_shazhi.webp",
     "role": 5,
     "element": 1,
+    "rank": "",
     "counters": [
       {
         "id": "65303",
@@ -20,6 +21,7 @@
     "image": "images/saints/sds_battleUI_yadianna_shengyi.webp",
     "role": 1,
     "element": 5,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -29,6 +31,7 @@
     "image": "images/saints/sds_battleUI_bosaidong_haihuang.webp",
     "role": 3,
     "element": 5,
+    "rank": "SS",
     "counters": [
       {
         "id": "55201",
@@ -43,6 +46,7 @@
     "image": "images/saints/sds_battleUI_aertuimisi_yueshen.webp",
     "role": 3,
     "element": 5,
+    "rank": "",
     "counters": []
   },
   {
@@ -52,6 +56,7 @@
     "image": "images/saints/sds_battleUI_shun_mingwang.webp",
     "role": 1,
     "element": 6,
+    "rank": "",
     "counters": []
   },
   {
@@ -61,6 +66,7 @@
     "image": "images/saints/sds_battleUI_hadisi_mingwang.webp",
     "role": 1,
     "element": 6,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -70,6 +76,7 @@
     "image": "images/saints/sds_battleUI_tanatuosi_sishen.webp",
     "role": 3,
     "element": 6,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -79,6 +86,7 @@
     "image": "images/saints/sds_battleUI_xiupunuosi_shuishen.webp",
     "role": 5,
     "element": 6,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -88,6 +96,7 @@
     "image": "images/saints/sds_battleUI_zilong_shen.webp",
     "role": 1,
     "element": 5,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -97,6 +106,7 @@
     "image": "images/saints/sds_battleUI_tonghu_shen.webp",
     "role": 1,
     "element": 5,
+    "rank": "",
     "counters": []
   },
   {
@@ -106,6 +116,7 @@
     "image": "images/saints/sds_battleUI_aludiba_shen.webp",
     "role": 1,
     "element": 5,
+    "rank": "",
     "counters": []
   },
   {
@@ -115,6 +126,7 @@
     "image": "images/saints/sds_battleUI_xingshi_shen.webp",
     "role": 2,
     "element": 5,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -124,6 +136,7 @@
     "image": "images/saints/sds_battleUI_aiaoliya_shen.webp",
     "role": 2,
     "element": 5,
+    "rank": "",
     "counters": []
   },
   {
@@ -133,6 +146,7 @@
     "image": "images/saints/sds_battleUI_kamiao_shen.webp",
     "role": 2,
     "element": 5,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -142,6 +156,7 @@
     "image": "images/saints/sds_battleUI_shun_shen.webp",
     "role": 5,
     "element": 5,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -151,6 +166,7 @@
     "image": "images/saints/sds_battleUI_binghe_shen.webp",
     "role": 3,
     "element": 5,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -160,6 +176,7 @@
     "image": "images/saints/sds_battleUI_yihui_shen.webp",
     "role": 4,
     "element": 5,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -169,6 +186,7 @@
     "image": "images/saints/sds_battleUI_xiuluo_shen.webp",
     "role": 2,
     "element": 6,
+    "rank": "",
     "counters": []
   },
   {
@@ -178,6 +196,7 @@
     "image": "images/saints/sds_battleUI_yalun_mingwang.webp",
     "role": 2,
     "element": 6,
+    "rank": "",
     "counters": []
   },
   {
@@ -187,6 +206,7 @@
     "image": "images/saints/sds_battleUI_abuluodi_shen.webp",
     "role": 3,
     "element": 6,
+    "rank": "",
     "counters": []
   },
   {
@@ -196,6 +216,7 @@
     "image": "images/saints/sds_battleUI_zilong_huangjintianlong.webp",
     "role": 1,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -205,6 +226,7 @@
     "image": "images/saints/sds_battleUI_tonghu_laonian.webp",
     "role": 5,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -214,6 +236,7 @@
     "image": "images/saints/sds_battleUI_huangjintianma.webp",
     "role": 2,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -223,6 +246,7 @@
     "image": "images/saints/sds_battleUI_binghe_jinbainiao.webp",
     "role": 3,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -232,6 +256,7 @@
     "image": "images/saints/sds_battleUI_shun_jinxiannv.webp",
     "role": 5,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -241,6 +266,7 @@
     "image": "images/saints/sds_battleUI_jiaohuang_shiang.webp",
     "role": 2,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -250,6 +276,7 @@
     "image": "images/saints/sds_battleUI_douma_tiandou.webp",
     "role": 4,
     "element": 5,
+    "rank": "",
     "counters": []
   },
   {
@@ -259,6 +286,7 @@
     "image": "images/saints/sds_battleUI_yueweishi_kalisituo.webp",
     "role": 5,
     "element": 5,
+    "rank": "",
     "counters": []
   },
   {
@@ -268,6 +296,7 @@
     "image": "images/saints/sds_battleUI_yuemonv_hekatui.webp",
     "role": 5,
     "element": 6,
+    "rank": "",
     "counters": []
   },
   {
@@ -277,6 +306,7 @@
     "image": "images/saints/sds_battleUI_niaobi_dianxing.webp",
     "role": 4,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -286,6 +316,7 @@
     "image": "images/saints/sds_battleUI_kalong_tianjian.webp",
     "role": 2,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -295,6 +326,7 @@
     "image": "images/saints/sds_battleUI_shiang_baiyang.webp",
     "role": 1,
     "element": 2,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -304,6 +336,7 @@
     "image": "images/saints/sds_battleUI_xilufeidu_tianjie.webp",
     "role": 4,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -313,6 +346,7 @@
     "image": "images/saints/sds_battleUI_miao_diyaoxing.webp",
     "role": 5,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -322,6 +356,7 @@
     "image": "images/saints/sds_battleUI_zheluosi_diqixing.webp",
     "role": 1,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -331,6 +366,7 @@
     "image": "images/saints/sds_battleUI_laimi_difuxing.webp",
     "role": 4,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -340,6 +376,7 @@
     "image": "images/saints/sds_battleUI_falaao_tianshou.webp",
     "role": 4,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -349,6 +386,7 @@
     "image": "images/saints/sds_battleUI_gujiaduo_dibaoxing.webp",
     "role": 2,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -358,6 +396,7 @@
     "image": "images/saints/sds_battleUI_kuien_tianmo.webp",
     "role": 3,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -367,6 +406,7 @@
     "image": "images/saints/sds_battleUI_ladamandisi_tianmeng.webp",
     "role": 2,
     "element": 6,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -376,6 +416,7 @@
     "image": "images/saints/sds_battleUI_minuosi_tiangui.webp",
     "role": 4,
     "element": 6,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -385,6 +426,7 @@
     "image": "images/saints/sds_battleUI_shuijing_tianxiong.webp",
     "role": 4,
     "element": 6,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -394,6 +436,7 @@
     "image": "images/saints/sds_battleUI_panduola_changfu.webp",
     "role": 5,
     "element": 6,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -403,6 +446,7 @@
     "image": "images/saints/sds_battleUI_aiyagesi_tianxiong.webp",
     "role": 3,
     "element": 6,
+    "rank": "",
     "counters": []
   },
   {
@@ -412,6 +456,7 @@
     "image": "images/saints/sds_battleUI_yiao_liuyaoshou.webp",
     "role": 4,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -421,6 +466,7 @@
     "image": "images/saints/sds_battleUI_didisi_meirenyu.webp",
     "role": 5,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -430,6 +476,7 @@
     "image": "images/saints/sds_battleUI_kelixiula_haihuangzi.webp",
     "role": 2,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -439,6 +486,7 @@
     "image": "images/saints/sds_battleUI_baian_haima.webp",
     "role": 1,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -448,6 +496,7 @@
     "image": "images/saints/sds_battleUI_aierzhake_haimoshou.webp",
     "role": 2,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -457,6 +506,7 @@
     "image": "images/saints/sds_battleUI_kasa_haihuanshou.webp",
     "role": 5,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -466,6 +516,7 @@
     "image": "images/saints/sds_battleUI_sulante_haimonv.webp",
     "role": 5,
     "element": 5,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -475,6 +526,7 @@
     "image": "images/saints/sds_battleUI_jialong_hailong.webp",
     "role": 4,
     "element": 6,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -484,6 +536,7 @@
     "image": "images/saints/sds_battleUI_miluo_tianxie.webp",
     "role": 4,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -493,6 +546,7 @@
     "image": "images/saints/sds_battleUI_disimasike_juxie.webp",
     "role": 3,
     "element": 1,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -502,6 +556,7 @@
     "image": "images/saints/sds_battleUI_abuluodi_shuangyu.webp",
     "role": 3,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -511,6 +566,7 @@
     "image": "images/saints/sds_battleUI_zilong_tiancheng.webp",
     "role": 1,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -520,6 +576,7 @@
     "image": "images/saints/sds_battleUI_shuangyu_kadinaer.webp",
     "role": 4,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -529,6 +586,7 @@
     "image": "images/saints/sds_battleUI_disituoer_juxie.webp",
     "role": 3,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -538,6 +596,7 @@
     "image": "images/saints/sds_battleUI_aiaoliya_shizi.webp",
     "role": 2,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -547,6 +606,7 @@
     "image": "images/saints/sds_battleUI_kaisa_shizi.webp",
     "role": 2,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -556,6 +616,7 @@
     "image": "images/saints/sds_battleUI_mu_baiyang.webp",
     "role": 5,
     "element": 2,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -565,6 +626,7 @@
     "image": "images/saints/sds_battleUI_xingshi_sheshou.webp",
     "role": 4,
     "element": 2,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -574,6 +636,7 @@
     "image": "images/saints/sds_battleUI_aieluosi_sheshou.webp",
     "role": 4,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -583,6 +646,7 @@
     "image": "images/saints/sds_battleUI_yihui_shizi.webp",
     "role": 3,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -592,6 +656,7 @@
     "image": "images/saints/sds_battleUI_geshita_sheshou.webp",
     "role": 4,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -601,6 +666,7 @@
     "image": "images/saints/sds_battleUI_kamiao_shuiping.webp",
     "role": 3,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -610,6 +676,7 @@
     "image": "images/saints/sds_battleUI_misituoliya_shuiping.webp",
     "role": 4,
     "element": 3,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -619,6 +686,7 @@
     "image": "images/saints/sds_battleUI_tonghu_tiancheng.webp",
     "role": 1,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -628,6 +696,7 @@
     "image": "images/saints/sds_battleUI_sajia_shuangzi.webp",
     "role": 2,
     "element": 5,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -637,6 +706,7 @@
     "image": "images/saints/sds_battleUI_binghe_shuiping.webp",
     "role": 3,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -646,6 +716,7 @@
     "image": "images/saints/sds_battleUI_jinniu_aludiba_jinniu.webp",
     "role": 1,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -655,6 +726,7 @@
     "image": "images/saints/sds_battleUI_aokesi_jinniu.webp",
     "role": 1,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -664,6 +736,7 @@
     "image": "images/saints/sds_battleUI_xiuluo_shanyang.webp",
     "role": 4,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -673,6 +746,7 @@
     "image": "images/saints/sds_battleUI_aikalate_tianxie.webp",
     "role": 3,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -682,6 +756,7 @@
     "image": "images/saints/sds_battleUI_yicang_mojie.webp",
     "role": 2,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -691,6 +766,7 @@
     "image": "images/saints/sds_battleUI_shajia_chunv.webp",
     "role": 3,
     "element": 5,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -700,6 +776,7 @@
     "image": "images/saints/sds_battleUI_shun_chunv.webp",
     "role": 3,
     "element": 4,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -709,6 +786,7 @@
     "image": "images/saints/sds_battleUI_shijingmo_chunv.webp",
     "role": 1,
     "element": 5,
+    "rank": "",
     "counters": []
   },
   {
@@ -718,6 +796,7 @@
     "image": "images/saints/sds_battleUI_jialong_shuangzi.webp",
     "role": 4,
     "element": 5,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -727,6 +806,7 @@
     "image": "images/saints/sds_battleUI_shajia_alaiyeshi.webp",
     "role": 3,
     "element": 5,
+    "rank": "",
     "counters": []
   },
   {
@@ -736,6 +816,7 @@
     "image": "images/saints/sds_battleUI_aodexiusi_shefu.webp",
     "role": 5,
     "element": 5,
+    "rank": "",
     "counters": []
   },
   {
@@ -745,6 +826,7 @@
     "image": "images/saints/sds_battleUI_ndshiang_baiyang.webp",
     "role": 5,
     "element": 5,
+    "rank": "",
     "counters": []
   },
   {
@@ -754,6 +836,7 @@
     "image": "images/saints/sds_battleUI_gaiyin_shuangzi.webp",
     "role": 4,
     "element": 6,
+    "rank": "",
     "counters": []
   },
   {
@@ -763,6 +846,7 @@
     "image": "images/saints/sds_battleUI_sajia_shuangzie.webp",
     "role": 3,
     "element": 6,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -772,6 +856,7 @@
     "image": "images/saints/sds_battleUI_moxisi_baijing.webp",
     "role": 1,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -781,6 +866,7 @@
     "image": "images/saints/sds_battleUI_moling_tianying.webp",
     "role": 2,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -790,6 +876,7 @@
     "image": "images/saints/sds_battleUI_aolufei_tianqin.webp",
     "role": 3,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -799,6 +886,7 @@
     "image": "images/saints/sds_battleUI_yalujiedi_wuxian.webp",
     "role": 1,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -808,6 +896,7 @@
     "image": "images/saints/sds_battleUI_shaerna_shefuxin.webp",
     "role": 4,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -817,6 +906,7 @@
     "image": "images/saints/sds_battleUI_dadi_diyuquan.webp",
     "role": 2,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -826,6 +916,7 @@
     "image": "images/saints/sds_battleUI_babie_banrenma.webp",
     "role": 3,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -835,6 +926,7 @@
     "image": "images/saints/sds_battleUI_meisidi_xiyi.webp",
     "role": 5,
     "element": 3,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -844,6 +936,7 @@
     "image": "images/saints/sds_battleUI_jimian_wuya.webp",
     "role": 3,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -853,6 +946,7 @@
     "image": "images/saints/sds_battleUI_diao_yinying.webp",
     "role": 2,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -862,6 +956,7 @@
     "image": "images/saints/sds_battleUI_delimi_tianjian.webp",
     "role": 4,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -871,6 +966,7 @@
     "image": "images/saints/sds_battleUI_shuijing_jujue.webp",
     "role": 2,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -880,6 +976,7 @@
     "image": "images/saints/sds_battleUI_yalugelu_xianying.webp",
     "role": 1,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -889,6 +986,7 @@
     "image": "images/saints/sds_battleUI_shiliwu_juquan.webp",
     "role": 2,
     "element": 4,
+    "rank": "SS",
     "counters": []
   },
   {
@@ -898,6 +996,7 @@
     "image": "images/saints/sds_battleUI_yadilian_liequan.webp",
     "role": 5,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -907,6 +1006,7 @@
     "image": "images/saints/sds_battleUI_jiabila_yufu.webp",
     "role": 3,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -916,6 +1016,7 @@
     "image": "images/saints/sds_battleUI_zilong_tianlong.webp",
     "role": 1,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -925,6 +1026,7 @@
     "image": "images/saints/sds_battleUI_anheitianlong.webp",
     "role": 1,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -934,6 +1036,7 @@
     "image": "images/saints/sds_battleUI_xiewu_dujiaoshou.webp",
     "role": 2,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -943,6 +1046,7 @@
     "image": "images/saints/sds_battleUI_shi_shuishe.webp",
     "role": 4,
     "element": 1,
+    "rank": "",
     "counters": []
   },
   {
@@ -952,6 +1056,7 @@
     "image": "images/saints/sds_battleUI_yihui_fenghuang.webp",
     "role": 2,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -961,6 +1066,7 @@
     "image": "images/saints/sds_battleUI_anheitianma.webp",
     "role": 4,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -970,6 +1076,7 @@
     "image": "images/saints/sds_battleUI_man_youshi.webp",
     "role": 3,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -979,6 +1086,7 @@
     "image": "images/saints/sds_battleUI_binghe_bainiao.webp",
     "role": 3,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -988,6 +1096,7 @@
     "image": "images/saints/sds_battleUI_nazhi_chailang.webp",
     "role": 5,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -997,6 +1106,7 @@
     "image": "images/saints/sds_battleUI_anheibainiao.webp",
     "role": 3,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -1006,6 +1116,7 @@
     "image": "images/saints/sds_battleUI_tianma_tianma.webp",
     "role": 2,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -1015,6 +1126,7 @@
     "image": "images/saints/sds_battleUI_zhenni_bianselong.webp",
     "role": 5,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -1024,6 +1136,7 @@
     "image": "images/saints/sds_battleUI_xi_daxiong.webp",
     "role": 1,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -1033,6 +1146,7 @@
     "image": "images/saints/sds_battleUI_shun_xiannv.webp",
     "role": 5,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -1042,6 +1156,7 @@
     "image": "images/saints/sds_battleUI_anheixiannv.webp",
     "role": 5,
     "element": 4,
+    "rank": "",
     "counters": []
   },
   {
@@ -1051,6 +1166,7 @@
     "image": "images/saints/sds_battleUI_xingshi_tianma.webp",
     "role": 2,
     "element": 3,
+    "rank": "",
     "counters": []
   },
   {
@@ -1060,6 +1176,7 @@
     "image": "images/saints/sds_battleUI_anheifenghuang.webp",
     "role": 4,
     "element": 2,
+    "rank": "",
     "counters": []
   },
   {
@@ -1069,6 +1186,7 @@
     "image": "images/saints/sds_battleUI_lasikumeng_yueweishi.webp",
     "role": 4,
     "element": 3,
+    "rank": "",
     "counters": []
   }
 ]

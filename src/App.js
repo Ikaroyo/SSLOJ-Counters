@@ -14,7 +14,10 @@ const App = () => {
     const saved = localStorage.getItem('ssloj-dark-mode');
     return saved ? JSON.parse(saved) : false;
   });
-  
+
+  // Add current view state
+  const [currentView, setCurrentView] = useState('home'); // 'home', 'teamBuilder', 'jsonEditor'
+
   const [characters, setCharacters] = useState([]);
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -23,30 +26,28 @@ const App = () => {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [showCounterModal, setShowCounterModal] = useState(false);
   const [showCounterInfo, setShowCounterInfo] = useState(false);
-  const [showTeamBuilder, setShowTeamBuilder] = useState(false);
-  const [showJsonEditor, setShowJsonEditor] = useState(false);
   const [showPositionSearch, setShowPositionSearch] = useState(false);
   const [searchingPosition, setSearchingPosition] = useState(null);
-  
+
   // Estados de equipos con valores iniciales desde localStorage
   const [team, setTeam] = useState(() => {
     const saved = localStorage.getItem('ssloj-my-team');
     return saved ? JSON.parse(saved) : { front: [null, null], back: [null, null, null] };
   });
-  
+
   const [enemyTeam, setEnemyTeam] = useState(() => {
     const saved = localStorage.getItem('ssloj-enemy-team');
     return saved ? JSON.parse(saved) : { front: [null, null], back: [null, null, null] };
   });
-  
+
   const [draggedCharacter, setDraggedCharacter] = useState(null);
   const [favoritesFilter, setFavoritesFilter] = useState(false);
 
   // Constants
   const roleNames = {
     1: "Protector",
-    2: "Guerrero", 
-    3: "Experto",
+    2: "Guerrero",
+    3: "Habilidad",
     4: "Asesino",
     5: "Asistente"
   };
@@ -54,7 +55,7 @@ const App = () => {
   const elementNames = {
     1: "Agua",
     2: "Fuego",
-    3: "Aire", 
+    3: "Aire",
     4: "Tierra",
     5: "Luz",
     6: "Oscuridad"
@@ -94,13 +95,13 @@ const App = () => {
     const loadCharacters = () => {
       const savedCharacters = localStorage.getItem('ssloj-characters');
       let charactersToLoad = saintsData;
-      
+
       if (savedCharacters) {
         try {
           const parsed = JSON.parse(savedCharacters);
           const savedIds = new Set(parsed.map(char => char.id));
           const newCharacters = saintsData.filter(char => !savedIds.has(char.id));
-          
+
           if (newCharacters.length > 0) {
             charactersToLoad = [...parsed, ...newCharacters];
           } else {
@@ -111,7 +112,7 @@ const App = () => {
           charactersToLoad = saintsData;
         }
       }
-      
+
       setCharacters(charactersToLoad);
       setFilteredCharacters(charactersToLoad);
     };
@@ -130,12 +131,12 @@ const App = () => {
     if (characters.length > 0) {
       const reconstructTeamFromStorage = (savedTeam) => {
         if (!savedTeam) return { front: [null, null], back: [null, null, null] };
-        
+
         return {
-          front: savedTeam.front.map(char => 
+          front: savedTeam.front.map(char =>
             char ? characters.find(c => c.id === char.id) || null : null
           ),
-          back: savedTeam.back.map(char => 
+          back: savedTeam.back.map(char =>
             char ? characters.find(c => c.id === char.id) || null : null
           )
         };
@@ -143,7 +144,7 @@ const App = () => {
 
       const savedMyTeam = localStorage.getItem('ssloj-my-team');
       const savedEnemyTeam = localStorage.getItem('ssloj-enemy-team');
-      
+
       if (savedMyTeam) {
         try {
           const parsedTeam = JSON.parse(savedMyTeam);
@@ -153,7 +154,7 @@ const App = () => {
           console.error('Error reconstructing my team:', error);
         }
       }
-      
+
       if (savedEnemyTeam) {
         try {
           const parsedEnemyTeam = JSON.parse(savedEnemyTeam);
@@ -169,26 +170,26 @@ const App = () => {
   // Filter characters based on search term
   useEffect(() => {
     let filtered = characters;
-    
+
     if (searchTerm.trim() !== "") {
       filtered = filtered.filter(character =>
         character.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         character.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-    
+
     if (roleFilter !== "") {
       filtered = filtered.filter(character => character.role === parseInt(roleFilter));
     }
-    
+
     if (elementFilter !== "") {
       filtered = filtered.filter(character => character.element === parseInt(elementFilter));
     }
-    
+
     if (favoritesFilter) {
       filtered = filtered.filter(character => character.isFavorite === true);
     }
-    
+
     setFilteredCharacters(filtered);
   }, [searchTerm, roleFilter, elementFilter, favoritesFilter, characters]);
 
@@ -226,10 +227,10 @@ const App = () => {
     setCharacters((chars) =>
       chars.map((char) =>
         char.id === characterId
-          ? { 
-              ...char, 
-              counters: [...(char.counters || []), { id: counterId, position: counterPosition }] 
-            }
+          ? {
+            ...char,
+            counters: [...(char.counters || []), { id: counterId, position: counterPosition }]
+          }
           : char
       )
     );
@@ -240,9 +241,9 @@ const App = () => {
       chars.map((char) =>
         char.id === characterId
           ? {
-              ...char,
-              counters: (char.counters || []).filter((counter) => counter.id !== counterId),
-            }
+            ...char,
+            counters: (char.counters || []).filter((counter) => counter.id !== counterId),
+          }
           : char
       )
     );
@@ -254,7 +255,7 @@ const App = () => {
       alert('Este santo ya está en tu equipo');
       return;
     }
-    
+
     if (position === "front" && index !== null && index < 2) {
       const newFront = [...team.front];
       newFront[index] = character;
@@ -284,7 +285,7 @@ const App = () => {
       alert('Este santo ya está en el equipo enemigo');
       return;
     }
-    
+
     if (position === "front" && index !== null && index < 2) {
       const newFront = [...enemyTeam.front];
       newFront[index] = character;
@@ -359,10 +360,10 @@ const App = () => {
 
   const downloadJsonFile = () => {
     const dataStr = JSON.stringify(characters, null, 2);
-    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-    
+    const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+
     const exportFileDefaultName = 'saints.json';
-    
+
     const linkElement = document.createElement('a');
     linkElement.setAttribute('href', dataUri);
     linkElement.setAttribute('download', exportFileDefaultName);
@@ -370,9 +371,9 @@ const App = () => {
   };
 
   const toggleFavorite = (characterId) => {
-    setCharacters(chars => 
-      chars.map(char => 
-        char.id === characterId 
+    setCharacters(chars =>
+      chars.map(char =>
+        char.id === characterId
           ? { ...char, isFavorite: !char.isFavorite }
           : char
       )
@@ -388,25 +389,98 @@ const App = () => {
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-300 ${
-        darkMode ? "dark bg-gray-900" : "bg-gray-50"
-      }`}
+      className={`min-h-screen transition-all duration-500 ${darkMode ? "dark bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" : "bg-gradient-to-br from-gray-50 to-gray-100"
+        }`}
     >
       {/* Navbar */}
       <Navbar
         darkMode={darkMode}
         setDarkMode={setDarkMode}
-        showJsonEditor={showJsonEditor}
-        setShowJsonEditor={setShowJsonEditor}
-        showTeamBuilder={showTeamBuilder}
-        setShowTeamBuilder={setShowTeamBuilder}
+        currentView={currentView}
+        setCurrentView={setCurrentView}
       />
 
       <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
-        {/* JSON Editor Panel */}
-        {showJsonEditor && (
-          <div className="mb-8 p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
-            <JsonEditor 
+        {/* Home View - Character Management */}
+        {currentView === 'home' && (
+          <>
+            {/* Enhanced Search Bar */}
+            <SearchAndFilters
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              roleFilter={roleFilter}
+              setRoleFilter={setRoleFilter}
+              elementFilter={elementFilter}
+              setElementFilter={setElementFilter}
+              favoritesFilter={favoritesFilter}
+              setFavoritesFilter={setFavoritesFilter}
+              roleNames={roleNames}
+              elementNames={elementNames}
+              RoleIcon={RoleIcon}
+              ElementIcon={ElementIcon}
+              filteredCharacters={filteredCharacters}
+              totalCharacters={characters.length}
+              clearFilters={clearFilters}
+            />
+
+            {/* Characters Grid */}
+            <CharacterGrid
+              characters={filteredCharacters}
+              allCharacters={characters}
+              roleNames={roleNames}
+              elementNames={elementNames}
+              roleColors={roleColors}
+              elementColors={elementColors}
+              showTeamBuilder={false}
+              showPositionSearch={showPositionSearch}
+              onDragStart={handleDragStart}
+              onSelectForPosition={selectCharacterForPosition}
+              onAddToTeam={addToTeam}
+              onAddToEnemyTeam={addToEnemyTeam}
+              onToggleFavorite={toggleFavorite}
+              onShowCounterInfo={(char) => {
+                setSelectedCharacter(char);
+                setShowCounterInfo(true);
+              }}
+              RoleIcon={RoleIcon}
+              ElementIcon={ElementIcon}
+            />
+          </>
+        )}
+
+        {/* Team Builder View */}
+        {currentView === 'teamBuilder' && (
+          <div className="bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 rounded-xl shadow-lg dark:shadow-slate-900/50 border border-gray-200 dark:border-slate-700">
+            <TeamBuilder
+              team={team}
+              enemyTeam={enemyTeam}
+              characters={characters}
+              filteredCharacters={filteredCharacters}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              roleFilter={roleFilter}
+              setRoleFilter={setRoleFilter}
+              elementFilter={elementFilter}
+              setElementFilter={setElementFilter}
+              handleDragStart={handleDragStart}
+              handleDragOver={handleDragOver}
+              handleDrop={handleDrop}
+              handleRemoveFromTeam={handleRemoveFromTeam}
+              openPositionSearch={openPositionSearch}
+              setTeam={setTeam}
+              setEnemyTeam={setEnemyTeam}
+              roleNames={roleNames}
+              elementNames={elementNames}
+              RoleIcon={RoleIcon}
+              ElementIcon={ElementIcon}
+            />
+          </div>
+        )}
+
+        {/* JSON Editor View */}
+        {currentView === 'jsonEditor' && (
+          <div className="mb-8 p-4 sm:p-6 bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 rounded-xl shadow-lg dark:shadow-slate-900/50 border border-gray-200 dark:border-slate-700">
+            <JsonEditor
               characters={characters}
               setCharacters={setCharacters}
               roleNames={roleNames}
@@ -414,79 +488,6 @@ const App = () => {
               downloadJsonFile={downloadJsonFile}
             />
           </div>
-        )}
-
-        {/* Team Builder Panel */}
-        {showTeamBuilder && (
-          <TeamBuilder
-            team={team}
-            enemyTeam={enemyTeam}
-            characters={characters}
-            filteredCharacters={filteredCharacters}
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            roleFilter={roleFilter}
-            setRoleFilter={setRoleFilter}
-            elementFilter={elementFilter}
-            setElementFilter={setElementFilter}
-            handleDragStart={handleDragStart}
-            handleDragOver={handleDragOver}
-            handleDrop={handleDrop}
-            handleRemoveFromTeam={handleRemoveFromTeam}
-            openPositionSearch={openPositionSearch}
-            setTeam={setTeam}
-            setEnemyTeam={setEnemyTeam}
-            roleNames={roleNames}
-            elementNames={elementNames}
-            RoleIcon={RoleIcon}
-            ElementIcon={ElementIcon}
-          />
-        )}
-
-        {/* Enhanced Search Bar - Only show when NOT in team builder mode */}
-        {!showTeamBuilder && (
-          <SearchAndFilters
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            roleFilter={roleFilter}
-            setRoleFilter={setRoleFilter}
-            elementFilter={elementFilter}
-            setElementFilter={setElementFilter}
-            favoritesFilter={favoritesFilter}
-            setFavoritesFilter={setFavoritesFilter}
-            roleNames={roleNames}
-            elementNames={elementNames}
-            RoleIcon={RoleIcon}
-            ElementIcon={ElementIcon}
-            filteredCharacters={filteredCharacters}
-            totalCharacters={characters.length}
-            clearFilters={clearFilters}
-          />
-        )}
-
-        {/* Characters Grid - Only show when NOT in team builder mode */}
-        {!showTeamBuilder && (
-          <CharacterGrid
-            characters={filteredCharacters}
-            allCharacters={characters}
-            roleNames={roleNames}
-            elementNames={elementNames}
-            roleColors={roleColors}
-            elementColors={elementColors}
-            showTeamBuilder={showTeamBuilder}
-            showPositionSearch={showPositionSearch}
-            onDragStart={handleDragStart}
-            onSelectForPosition={selectCharacterForPosition}
-            onAddToTeam={addToTeam}
-            onAddToEnemyTeam={addToEnemyTeam}
-            onToggleFavorite={toggleFavorite}
-            onShowCounterInfo={(char) => {
-              setSelectedCharacter(char);
-              setShowCounterInfo(true);
-            }}
-            RoleIcon={RoleIcon}
-            ElementIcon={ElementIcon}
-          />
         )}
 
         {/* Modals Container */}

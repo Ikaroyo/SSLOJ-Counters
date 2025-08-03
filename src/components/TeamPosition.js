@@ -25,7 +25,7 @@ const TeamPosition = ({
   const sizeClasses = {
     small: "w-16 h-16",
     normal: "w-20 h-20",
-    large: "w-24 h-24"
+    large: "w-28 h-28"
   };
 
   const colors = isEnemy
@@ -189,7 +189,7 @@ const TeamPosition = ({
       className={`${sizeClasses[size]} border-2 border-dashed ${colors} ${hoverColors} ${canReceiveSelected ? 'ring-2 ring-green-400 dark:ring-green-500' : ''
         } ${isCorrectlyPositionedCounter ? 'ring-2 ring-green-500 dark:ring-green-400' : ''
         } ${isWrongPositionCounter ? 'ring-2 ring-orange-500 dark:ring-orange-400' : ''
-        } ${getGlowClass()} rounded-xl flex items-center justify-center relative transition-all duration-200 hover:scale-105 cursor-pointer shadow-sm`}
+        } ${getGlowClass()} rounded-xl flex items-center justify-center relative transition-all duration-200 hover:scale-105 cursor-pointer shadow-sm dark:shadow-slate-900/20 hover:shadow-md dark:hover:shadow-slate-900/40 backdrop-blur-sm`}
       onDragOver={handleDragOver}
       onDrop={handleDrop}
       onClick={handleClick}
@@ -226,7 +226,7 @@ const TeamPosition = ({
 
       {/* Counter suggestion indicator */}
       {shouldHighlight && suggestedCounters.length > 0 && !character && (
-        <div className="absolute -top-2 -right-2 bg-yellow-500 text-white text-xs px-2 py-1 rounded-full text-center min-w-[20px] h-5 flex items-center justify-center font-bold animate-bounce z-10">
+        <div className="absolute -top-4 -right-4 bg-yellow-500 text-white text-sm px-3 py-2 rounded-full text-center min-w-[36px] h-9 flex items-center justify-center font-bold animate-bounce z-10 shadow-lg shadow-yellow-500/50">
           !
         </div>
       )}
@@ -249,22 +249,22 @@ const TeamPosition = ({
 
           {/* Counter fulfillment overlay - only if correctly positioned */}
           {isCorrectlyPositionedCounter && (
-            <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-green-500/90 to-emerald-500/90 text-white text-xs px-1 py-0.5 rounded-t-xl shadow-lg z-40">
-              <p className="text-center font-bold animate-pulse">¡Counter activo!</p>
+            <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-green-500/95 to-emerald-500/95 text-white text-sm px-2 py-1 rounded-t-xl shadow-lg z-40">
+              <p className="text-center font-bold animate-pulse leading-tight">¡Counter activo!</p>
             </div>
           )}
 
           {/* Wrong position overlay - only if in wrong position */}
           {isWrongPositionCounter && (
-            <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-orange-500/90 to-red-500/90 text-white text-xs px-1 py-0.5 rounded-t-xl shadow-lg z-40">
-              <p className="text-center font-bold animate-pulse">¡Posición incorrecta!</p>
+            <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-orange-500/95 to-red-500/95 text-white text-sm px-2 py-1 rounded-t-xl shadow-lg z-40">
+              <p className="text-center font-bold animate-pulse leading-tight">¡Posición incorrecta!</p>
             </div>
           )}
 
           <img
             src={character.image}
             alt={character.name}
-            className="w-full h-full object-cover rounded-xl transition-all duration-200 group-hover:scale-95 relative z-10"
+            className="w-full h-full object-cover object-top rounded-xl transition-all duration-200 group-hover:scale-95 relative z-10"
           />
 
           {/* Drag Indicator */}
@@ -284,24 +284,41 @@ const TeamPosition = ({
           </button>
 
           {/* Character Name Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white text-xs p-2 rounded-b-xl opacity-0 group-hover:opacity-100 transition-opacity z-30">
-            <p className="truncate font-medium">{character.name}</p>
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent text-white text-sm p-2 rounded-b-xl opacity-0 group-hover:opacity-100 transition-opacity z-30">
+            <p className="truncate font-bold leading-tight">{character.name}</p>
           </div>
 
           {/* Counter suggestion overlay - only show if no character */}
           {shouldHighlight && suggestedCounters.length > 0 && (
-            <div className="absolute top-0 left-0 right-0 bg-yellow-500/80 text-white text-xs px-1 py-0.5 rounded-t-xl">
-              <p className="text-center font-bold">Sugerido aquí!</p>
+            <div className="absolute top-0 left-0 right-0 bg-yellow-500/95 text-white text-sm px-2 py-2 rounded-t-xl shadow-lg z-40">
+              <p className="text-center font-bold animate-pulse leading-tight">¡Sugerido aquí!</p>
+            </div>
+          )}
+
+          {/* Enhanced SS Rank Badge - Only show if rank is SS */}
+          {character && character.rank === "SS" && (
+            <div className="absolute top-0.5 left-0.5 bg-gradient-to-br from-purple-800 via-purple-900 to-indigo-900 text-white shadow-lg px-2 py-1.5 rounded-lg text-xs font-black border border-yellow-400 transform hover:scale-110 transition-all duration-200 z-40"
+              style={{
+                textShadow: '0 1px 3px rgba(0,0,0,0.9), 0 0 6px rgba(255,255,255,0.5)',
+                boxShadow: '0 6px 20px rgba(139, 69, 19, 0.9), inset 0 1px 0 rgba(255,215,0,0.7), 0 0 15px rgba(255,215,0,0.4)'
+              }}>
+              <div className="flex flex-col items-center gap-0.5">
+                <div className="flex items-center gap-0.5">
+                  <span className="text-yellow-300 font-black text-xs tracking-wider drop-shadow-sm">SS</span>
+                  <div className="w-0.5 h-2.5 bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-full"></div>
+                </div>
+                <span className="text-yellow-200 font-bold text-xs tracking-wide uppercase drop-shadow-sm leading-none">RANK</span>
+              </div>
             </div>
           )}
         </div>
       ) : (
         <div className="text-center group">
-          <Plus size={16} className="mx-auto mb-2 opacity-50 group-hover:opacity-80 transition-opacity" />
-          <span className={`text-xs font-medium ${canReceiveSelected
-            ? 'text-green-600 dark:text-green-400 font-bold'
+          <Plus size={size === 'large' ? 28 : size === 'normal' ? 24 : 20} className="mx-auto mb-2 opacity-50 group-hover:opacity-80 transition-opacity" />
+          <span className={`${size === 'large' ? 'text-base' : size === 'normal' ? 'text-sm' : 'text-xs'} font-bold ${canReceiveSelected
+            ? 'text-green-600 dark:text-green-400'
             : shouldHighlight
-              ? 'text-yellow-600 dark:text-yellow-400 font-bold'
+              ? 'text-yellow-600 dark:text-yellow-400'
               : isEnemy
                 ? (position === 'front' ? 'text-orange-500 dark:text-orange-400' : 'text-purple-500 dark:text-purple-400')
                 : (position === 'front' ? 'text-red-500 dark:text-red-400' : 'text-blue-500 dark:text-blue-400')
@@ -310,14 +327,14 @@ const TeamPosition = ({
           </span>
           {canReceiveSelected && (
             <div className="mt-1">
-              <span className="text-xs text-green-600 dark:text-green-400 font-bold">
+              <span className={`${size === 'large' ? 'text-sm' : 'text-xs'} text-green-600 dark:text-green-400 font-bold leading-tight`}>
                 ¡Colocar aquí!
               </span>
             </div>
           )}
           {shouldHighlight && suggestedCounters.length > 0 && !canReceiveSelected && (
-            <div className="mt-1">
-              <span className="text-xs text-yellow-600 dark:text-yellow-400 font-bold">
+            <div className="mt-2">
+              <span className={`${size === 'large' ? 'text-sm' : 'text-xs'} text-yellow-600 dark:text-yellow-400 font-bold bg-yellow-100 dark:bg-yellow-900/30 px-2 py-1 rounded-lg border border-yellow-300 dark:border-yellow-600 leading-tight`}>
                 ¡Counter!
               </span>
             </div>
