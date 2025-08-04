@@ -413,15 +413,15 @@ const JsonEditor = ({
                                 Posición
                               </label>
                               <select
-                                value={counter.position || 'any'}
+                                value={counter.position || 'opposite'}
                                 onChange={(e) => updateCounterInEdit(index, 'position', e.target.value)}
                                 className="w-full px-3 py-3 border rounded-lg text-sm dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 title="Dónde colocar este counter en mi alineación"
                               >
-                                <option value="any">Cualquiera</option>
                                 <option value="opposite">Opuesto</option>
                                 <option value="front">Frente</option>
                                 <option value="back">Atrás</option>
+                                <option value="any">Cualquiera</option>
                               </select>
                             </div>
 

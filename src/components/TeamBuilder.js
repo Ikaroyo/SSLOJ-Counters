@@ -386,6 +386,7 @@ const TeamBuilder = ({
     // Determine target position based on counter requirements
     let targetPosition = null;
     let targetIndex = -1;
+    let actualPosition = position; // Track what position we're actually using
 
     switch (position) {
       case 'front':
@@ -419,14 +420,33 @@ const TeamBuilder = ({
         }
         break;
       case 'any':
-        // Find any empty position, prefer front first
-        targetIndex = team.front.findIndex(pos => pos === null);
-        if (targetIndex !== -1) {
-          targetPosition = 'front';
+        // Default to opposite position first when position is "any"
+        actualPosition = 'opposite';
+        if (enemyPosition === 'front') {
+          // Enemy is in front, try to place counter in same front position
+          if (team.front[enemyIndex] === null) {
+            targetPosition = 'front';
+            targetIndex = enemyIndex;
+          }
         } else {
-          targetIndex = team.back.findIndex(pos => pos === null);
-          if (targetIndex !== -1) {
+          // Enemy is in back, try to place counter in same back position
+          if (team.back[enemyIndex] === null) {
             targetPosition = 'back';
+            targetIndex = enemyIndex;
+          }
+        }
+
+        // If opposite position is not available, find any empty position
+        if (targetPosition === null) {
+          actualPosition = 'any'; // Reset to any since opposite wasn't available
+          targetIndex = team.front.findIndex(pos => pos === null);
+          if (targetIndex !== -1) {
+            targetPosition = 'front';
+          } else {
+            targetIndex = team.back.findIndex(pos => pos === null);
+            if (targetIndex !== -1) {
+              targetPosition = 'back';
+            }
           }
         }
         break;
@@ -444,17 +464,30 @@ const TeamBuilder = ({
         setTeam(prev => ({ ...prev, back: newBack }));
       }
 
-      // Show success message
-      const positionText = position === 'front' ? 'línea delantera' :
-        position === 'back' ? 'línea trasera' :
-          position === 'opposite' ? `posición opuesta (${targetPosition === 'front' ? `F${targetIndex + 1}` : `B${targetIndex + 3}`})` :
-            'cualquier posición';
+      // Show success message with actual position used
+      let positionText;
+      if (position === 'any' && actualPosition === 'opposite') {
+        positionText = `posición opuesta (${targetPosition === 'front' ? `F${targetIndex + 1}` : `B${targetIndex + 3}`}) - se eligió opuesto por defecto`;
+      } else if (position === 'any' && actualPosition === 'any') {
+        positionText = `cualquier posición (${targetPosition === 'front' ? `F${targetIndex + 1}` : `B${targetIndex + 3}`}) - posición opuesta no disponible`;
+      } else {
+        positionText = position === 'front' ? 'línea delantera' :
+          position === 'back' ? 'línea trasera' :
+            position === 'opposite' ? `posición opuesta (${targetPosition === 'front' ? `F${targetIndex + 1}` : `B${targetIndex + 3}`})` :
+              'cualquier posición';
+      }
+
       alert(`${counter.name} ha sido asignado automáticamente a ${positionText}`);
     } else {
-      const positionText = position === 'front' ? 'línea delantera' :
-        position === 'back' ? 'línea trasera' :
-          position === 'opposite' ? `posición opuesta (${enemyPosition === 'front' ? `F${enemyIndex + 1}` : `B${enemyIndex + 3}`})` :
-            'ninguna posición';
+      let positionText;
+      if (position === 'any') {
+        positionText = 'posición opuesta (preferida) ni en ninguna posición disponible';
+      } else {
+        positionText = position === 'front' ? 'línea delantera' :
+          position === 'back' ? 'línea trasera' :
+            position === 'opposite' ? `posición opuesta (${enemyPosition === 'front' ? `F${enemyIndex + 1}` : `B${enemyIndex + 3}`})` :
+              'ninguna posición';
+      }
       alert(`No hay espacio disponible en ${positionText} para ${counter.name}`);
     }
   };

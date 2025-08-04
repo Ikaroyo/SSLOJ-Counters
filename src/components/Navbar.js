@@ -8,6 +8,42 @@ const Navbar = ({
   setCurrentView
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [editorUnlocked, setEditorUnlocked] = React.useState(() => {
+    return localStorage.getItem('ssloj-editor-unlocked') === 'true';
+  });
+  const [konamiSequence, setKonamiSequence] = React.useState([]);
+
+  // Konami Code: ↑ ↑ ↓ ↓ ← → ← → B A
+  const konamiCode = [
+    'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+    'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+    'KeyB', 'KeyA'
+  ];
+
+  React.useEffect(() => {
+    const handleKeyPress = (event) => {
+      const newSequence = [...konamiSequence, event.code].slice(-konamiCode.length);
+      setKonamiSequence(newSequence);
+
+      if (JSON.stringify(newSequence) === JSON.stringify(konamiCode)) {
+        setEditorUnlocked(true);
+        localStorage.setItem('ssloj-editor-unlocked', 'true');
+        setKonamiSequence([]);
+
+        // Show success message
+        const successDiv = document.createElement('div');
+        successDiv.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-pulse';
+        successDiv.textContent = '🎉 ¡Editor desbloqueado!';
+        document.body.appendChild(successDiv);
+        setTimeout(() => {
+          document.body.removeChild(successDiv);
+        }, 3000);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [konamiSequence]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -68,18 +104,35 @@ const Navbar = ({
               <span className="hidden sm:inline">Equipos</span>
             </button>
 
-            {/* JSON Editor Button */}
+            {/* Statistics Button */}
             <button
-              onClick={() => handleViewChange('jsonEditor')}
-              className={`px-3 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 text-sm font-medium ${currentView === 'jsonEditor'
-                ? 'bg-purple-600 dark:bg-purple-700 text-white shadow-lg'
+              onClick={() => handleViewChange('statistics')}
+              className={`px-3 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 text-sm font-medium ${currentView === 'statistics'
+                ? 'bg-red-600 dark:bg-red-700 text-white shadow-lg'
                 : 'text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700'
                 }`}
-              title="Editor JSON"
+              title="Estadísticas"
             >
-              <Edit size={16} />
-              <span className="hidden sm:inline">Editor</span>
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+              </svg>
+              <span className="hidden sm:inline">Estadísticas</span>
             </button>
+
+            {/* JSON Editor Button - Only show if unlocked */}
+            {editorUnlocked && (
+              <button
+                onClick={() => handleViewChange('jsonEditor')}
+                className={`px-3 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 text-sm font-medium ${currentView === 'jsonEditor'
+                  ? 'bg-purple-600 dark:bg-purple-700 text-white shadow-lg'
+                  : 'text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700'
+                  }`}
+                title="Editor JSON"
+              >
+                <Edit size={16} />
+                <span className="hidden sm:inline">Editor</span>
+              </button>
+            )}
 
             {/* Dark Mode Toggle */}
             <button
@@ -92,6 +145,13 @@ const Navbar = ({
           </div>
         </div>
       </div>
+
+      {/* Konami Code Progress Indicator (for debugging) */}
+      {konamiSequence.length > 0 && !editorUnlocked && (
+        <div className="fixed bottom-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded">
+          Código: {konamiSequence.length}/{konamiCode.length}
+        </div>
+      )}
     </nav>
   );
 };

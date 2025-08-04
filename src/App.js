@@ -7,6 +7,7 @@ import SearchAndFilters from './components/SearchAndFilters';
 import JsonEditor from './components/JsonEditor';
 import ModalsContainer from './components/ModalsContainer';
 import Navbar from './components/Navbar';
+import Statistics from './components/Statistics';
 
 const App = () => {
   // Estado con valores iniciales desde localStorage
@@ -477,8 +478,19 @@ const App = () => {
           </div>
         )}
 
+        {/* Statistics View */}
+        {currentView === 'statistics' && (
+          <div className="mb-8 p-4 sm:p-6 bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 rounded-xl shadow-lg dark:shadow-slate-900/50 border border-gray-200 dark:border-slate-700">
+            <Statistics
+              characters={characters}
+              roleNames={roleNames}
+              elementNames={elementNames}
+            />
+          </div>
+        )}
+
         {/* JSON Editor View */}
-        {currentView === 'jsonEditor' && (
+        {currentView === 'jsonEditor' && localStorage.getItem('ssloj-editor-unlocked') === 'true' && (
           <div className="mb-8 p-4 sm:p-6 bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 rounded-xl shadow-lg dark:shadow-slate-900/50 border border-gray-200 dark:border-slate-700">
             <JsonEditor
               characters={characters}
