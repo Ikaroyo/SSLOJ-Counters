@@ -54,21 +54,15 @@ const CharacterCard = ({
 
         {/* Enhanced SS Rank Badge - Only show if rank is SS */}
         {character.rank === "SS" && (
-          <div className="absolute top-2 left-2 bg-gradient-to-br from-purple-800 via-purple-900 to-indigo-900 text-white shadow-2xl px-4 py-2.5 rounded-xl text-sm font-black border-3 border-yellow-400 transform hover:scale-110 transition-all duration-200 z-30"
-            style={{
-              textShadow: '0 3px 6px rgba(0,0,0,0.9), 0 0 12px rgba(255,255,255,0.6)',
-              boxShadow: '0 10px 30px rgba(139, 69, 19, 1), inset 0 3px 0 rgba(255,215,0,0.8), 0 0 25px rgba(255,215,0,0.5), 0 0 50px rgba(255,215,0,0.3)'
-            }}>
-            <div className="flex flex-col items-center gap-1.5">
-              <div className="flex items-center gap-1.5">
-                <span className="text-yellow-300 font-black text-lg tracking-widest drop-shadow-lg">SS</span>
-                <div className="w-1.5 h-5 bg-gradient-to-b from-yellow-200 via-yellow-400 to-amber-500 rounded-full shadow-md"></div>
-              </div>
-              <span className="text-yellow-200 font-bold text-xs tracking-wide uppercase drop-shadow-sm">RANK</span>
-            </div>
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-purple-600 via-indigo-600 to-violet-700 rounded-xl opacity-80 blur-sm -z-10 animate-pulse"></div>
-            <div className="absolute -inset-3 bg-gradient-to-r from-yellow-400/30 via-amber-400/30 to-orange-400/30 rounded-xl blur-lg -z-20"></div>
-            <div className="absolute -inset-4 bg-gradient-to-r from-yellow-200/10 via-amber-200/10 to-orange-200/10 rounded-2xl blur-xl -z-30 animate-pulse"></div>
+          <div className="absolute top-2 left-2 transform hover:scale-110 transition-all duration-200 z-30">
+            <img
+              src="/images/ui/ss.png"
+              alt="SS Rank"
+              className="w-12 h-12 sm:w-14 sm:h-14 drop-shadow-lg hover:drop-shadow-xl transition-all duration-200"
+              style={{
+                filter: 'drop-shadow(0 0 12px rgba(255, 215, 0, 0.9)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 3px rgba(0, 0, 0, 0.5))',
+              }}
+            />
           </div>
         )}
 
@@ -175,7 +169,7 @@ const CharacterCard = ({
                     src={counter.image}
                     alt={counter.name}
                     className="w-7 h-7 rounded-lg object-cover cursor-pointer hover:scale-125 transition-all duration-200 border-2 border-white dark:border-gray-600 shadow-sm hover:shadow-md"
-                    title={`${counter.name} (${counterData.position})`}
+                    title={`${counter.name} - ${counter.title} (${counterData.position})`}
                     onClick={(e) => {
                       e.stopPropagation();
                       onShowCounterInfo(character);

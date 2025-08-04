@@ -1,5 +1,5 @@
 import React from "react";
-import { Shield, Sword, Target, Save, Search, Filter, Image as ImageIcon, X, Star } from "lucide-react";
+import { Sword, Shield, Target, Save, Search, Filter, Image as ImageIcon, X, Star } from "lucide-react";
 import TeamPosition from './TeamPosition';
 import { getCounterSuggestions } from '../utils/counterLogic';
 import { exportTeamAsImage } from '../utils/imageExport';
@@ -663,21 +663,15 @@ const TeamBuilder = ({
 
                 {/* Enhanced SS Rank Badge - Only show if rank is SS */}
                 {character.rank === "SS" && (
-                  <div className="absolute top-1 left-1 bg-gradient-to-br from-purple-800 via-purple-900 to-indigo-900 text-white shadow-2xl px-3 py-2 rounded-xl text-xs font-black border-2 border-yellow-400 transform hover:scale-110 transition-all duration-200 z-30"
-                    style={{
-                      textShadow: '0 2px 4px rgba(0,0,0,0.9), 0 0 8px rgba(255,255,255,0.5)',
-                      boxShadow: '0 8px 25px rgba(139, 69, 19, 0.9), inset 0 2px 0 rgba(255,215,0,0.7), 0 0 20px rgba(255,215,0,0.4), 0 0 40px rgba(255,215,0,0.2)'
-                    }}>
-                    <div className="flex flex-col items-center gap-1">
-                      <div className="flex items-center gap-1">
-                        <span className="text-yellow-300 font-black text-xs tracking-widest drop-shadow-lg">SS</span>
-                        <div className="w-1 h-3 bg-gradient-to-b from-yellow-200 via-yellow-400 to-amber-500 rounded-full shadow-sm"></div>
-                      </div>
-                      <span className="text-yellow-200 font-bold text-xs tracking-wide uppercase drop-shadow-sm">RANK</span>
-                    </div>
-                    <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-indigo-600 to-violet-700 rounded-xl opacity-80 blur-sm -z-10 animate-pulse"></div>
-                    <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400/30 via-amber-400/30 to-orange-400/30 rounded-xl blur-lg -z-20"></div>
-                    <div className="absolute -inset-3 bg-gradient-to-r from-yellow-200/10 via-amber-200/10 to-orange-200/10 rounded-2xl blur-xl -z-30 animate-pulse"></div>
+                  <div className="absolute top-1 left-1 transform hover:scale-110 transition-all duration-200 z-30">
+                    <img
+                      src="/images/ui/ss.png"
+                      alt="SS Rank"
+                      className="w-8 h-8 sm:w-10 sm:h-10 drop-shadow-lg hover:drop-shadow-xl transition-all duration-200"
+                      style={{
+                        filter: 'drop-shadow(0 0 8px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.6))',
+                      }}
+                    />
                   </div>
                 )}
 
@@ -767,7 +761,7 @@ const TeamBuilder = ({
           <div className="space-y-8">
             <div>
               <h4 className="text-lg font-bold text-center mb-4 flex items-center justify-center gap-2 text-gray-700 dark:text-slate-300">
-                <Shield size={20} /> Línea Trasera
+                <Sword size={20} /> Línea Trasera
               </h4>
               <div className="grid grid-cols-3 gap-6 max-w-md mx-auto">
                 {team.back.map((char, index) => (
@@ -795,7 +789,7 @@ const TeamBuilder = ({
             </div>
             <div>
               <h4 className="text-lg font-bold text-center mb-4 flex items-center justify-center gap-2 text-gray-700 dark:text-slate-300">
-                <Sword size={20} /> Línea Delantera
+                <Shield size={20} /> Línea Delantera
               </h4>
               <div className="flex justify-center">
                 <div className="grid grid-cols-2 gap-6 place-items-center">
@@ -834,7 +828,7 @@ const TeamBuilder = ({
           <div className="space-y-8">
             <div>
               <h4 className="text-lg font-bold text-center mb-4 flex items-center justify-center gap-2 text-gray-700 dark:text-slate-300">
-                <Sword size={20} /> Línea Delantera
+                <Shield size={20} /> Línea Delantera
               </h4>
               <div className="flex justify-center">
                 <div className="grid grid-cols-2 gap-6 place-items-center">
@@ -862,7 +856,7 @@ const TeamBuilder = ({
             </div>
             <div>
               <h4 className="text-lg font-bold text-center mb-4 flex items-center justify-center gap-2 text-gray-700 dark:text-slate-300">
-                <Shield size={20} /> Línea Trasera
+                <Sword size={20} /> Línea Trasera
               </h4>
               <div className="grid grid-cols-3 gap-6 max-w-md mx-auto">
                 {enemyTeam.back.map((char, index) => (
@@ -902,7 +896,7 @@ const TeamBuilder = ({
             {/* Back Line - Left Column */}
             <div className="space-y-4">
               <h4 className="text-sm font-semibold text-center text-gray-600 dark:text-gray-400 flex items-center justify-center gap-1">
-                <Shield size={16} />
+                <Sword size={16} />
                 Atrás
               </h4>
               {team.back.map((char, index) => (
@@ -931,7 +925,7 @@ const TeamBuilder = ({
             {/* Front Line - Right Column */}
             <div className="space-y-3 flex flex-col justify-center">
               <h4 className="text-sm font-semibold text-center text-gray-600 dark:text-gray-400 flex items-center justify-center gap-1">
-                <Sword size={16} />
+                <Shield size={16} />
                 Frente
               </h4>
               {team.front.map((char, index) => (
@@ -969,7 +963,7 @@ const TeamBuilder = ({
             {/* Enemy Front Line - Left Column */}
             <div className="space-y-3 flex flex-col justify-center">
               <h4 className="text-sm font-semibold text-center text-gray-600 dark:text-gray-400 flex items-center justify-center gap-1">
-                <Sword size={16} />
+                <Shield size={16} />
                 Frente
               </h4>
               {enemyTeam.front.map((char, index) => (
@@ -996,7 +990,7 @@ const TeamBuilder = ({
             {/* Enemy Back Line - Right Column */}
             <div className="space-y-4">
               <h4 className="text-sm font-semibold text-center text-gray-600 dark:text-gray-400 flex items-center justify-center gap-1">
-                <Shield size={16} />
+                <Sword size={16} />
                 Atrás
               </h4>
               {enemyTeam.back.map((char, index) => (
@@ -1064,7 +1058,7 @@ const TeamBuilder = ({
                         />
                       </div>
                       <p className="text-xs text-gray-700 dark:text-slate-300">
-                        <strong>{suggestion.enemy.name}</strong> → <strong className="text-green-600 dark:text-green-400">{suggestion.counter.name} ✓</strong>
+                        <strong>{suggestion.enemy.name} - {suggestion.enemy.title}</strong> → <strong className="text-green-600 dark:text-green-400">{suggestion.counter.name} - {suggestion.counter.title} ✓</strong>
                       </p>
                       <p className="text-xs text-green-600 dark:text-green-400 mt-1 font-semibold">
                         ¡Completado!
@@ -1110,9 +1104,9 @@ const TeamBuilder = ({
                         </div>
                       </div>
                       <p className="text-sm font-semibold text-gray-700 dark:text-slate-200 mb-2">
-                        <strong className="text-red-600 dark:text-red-400">{suggestion.enemy.name}</strong>
+                        <strong className="text-red-600 dark:text-red-400">{suggestion.enemy.name} - {suggestion.enemy.title}</strong>
                         <span className="mx-2">→</span>
-                        <strong className="text-orange-600 dark:text-orange-400">{suggestion.counter.name}</strong>
+                        <strong className="text-orange-600 dark:text-orange-400">{suggestion.counter.name} - {suggestion.counter.title}</strong>
                       </p>
                       <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-2 border border-blue-300 dark:border-blue-600 mb-2">
                         <p className="text-sm font-bold text-blue-700 dark:text-blue-300">
@@ -1126,7 +1120,7 @@ const TeamBuilder = ({
                       </div>
                       <div className="bg-green-100 dark:bg-green-900/30 rounded-lg p-2 border border-green-300 dark:border-green-600">
                         <p className="text-xs text-green-700 dark:text-green-300 text-center font-medium">
-                          💡 Click en {suggestion.counter.name} para asignar automáticamente
+                          💡 Click en {suggestion.counter.name} - {suggestion.counter.title} para asignar automáticamente
                         </p>
                       </div>
                     </div>
@@ -1179,7 +1173,7 @@ const TeamBuilder = ({
                       className="w-20 h-20 rounded-lg object-cover"
                     />
                     <div className="flex-1">
-                      <h6 className="font-semibold text-sm text-gray-800 dark:text-slate-100">{character.name}</h6>
+                      <h6 className="font-semibold text-sm text-gray-800 dark:text-slate-100">{character.name} - {character.title}</h6>
                       <p className="text-xs text-gray-600 dark:text-slate-400">
                         {character.counters?.length || 0} counters disponibles
                       </p>
@@ -1196,7 +1190,7 @@ const TeamBuilder = ({
                               src={counter.image}
                               alt={counter.name}
                               className="w-16 h-16 rounded object-cover border-2 border-white dark:border-slate-600 hover:scale-110 transition-transform"
-                              title={`${counter.name} (${counterData.position})`}
+                              title={`${counter.name} - ${counter.title} (${counterData.position})`}
                             />
                             <div className="absolute -bottom-1 -right-1 bg-purple-500 text-white text-xs px-1 rounded text-center min-w-[12px] h-3 flex items-center justify-center leading-none">
                               {counterData.position.charAt(0).toUpperCase()}
@@ -1239,7 +1233,7 @@ const TeamBuilder = ({
                       className="w-20 h-20 rounded-lg object-cover"
                     />
                     <div className="flex-1">
-                      <h6 className="font-semibold text-sm text-gray-800 dark:text-slate-100">{character.name}</h6>
+                      <h6 className="font-semibold text-sm text-gray-800 dark:text-slate-100">{character.name} - {character.title}</h6>
                       <p className="text-xs text-gray-600 dark:text-slate-400">
                         {character.counters?.length || 0} counters disponibles
                       </p>
@@ -1256,7 +1250,7 @@ const TeamBuilder = ({
                               src={counter.image}
                               alt={counter.name}
                               className="w-16 h-16 rounded object-cover border-2 border-white dark:border-slate-600 hover:scale-110 transition-transform"
-                              title={`${counter.name} (${counterData.position})`}
+                              title={`${counter.name} - ${counter.title} (${counterData.position})`}
                             />
                             <div className="absolute -bottom-1 -right-1 bg-purple-500 text-white text-xs px-1 rounded text-center min-w-[12px] h-3 flex items-center justify-center leading-none">
                               {counterData.position.charAt(0).toUpperCase()}

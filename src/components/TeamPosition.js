@@ -46,7 +46,7 @@ const TeamPosition = ({
       return `${position === 'front' ? `F${index + 1}` : `B${index + 3}`}`;
     }
 
-    const counterNames = suggestedCounters.map(s => s.counter.name).join(', ');
+    const counterNames = suggestedCounters.map(s => `${s.counter.name} - ${s.counter.title}`).join(', ');
     return `Sugerido: ${counterNames}`;
   };
 
@@ -249,14 +249,14 @@ const TeamPosition = ({
 
           {/* Counter fulfillment overlay - only if correctly positioned */}
           {isCorrectlyPositionedCounter && (
-            <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-green-500/95 to-emerald-500/95 text-white text-sm px-2 py-1 rounded-t-xl shadow-lg z-40">
+            <div className="absolute top-0 left-0 right-0 bg-gradient-to-l from-green-500/95 to-emerald-500/25 text-white text-sm px-2 py-1 rounded-t-xl shadow-lg z-40">
               <p className="text-center font-bold animate-pulse leading-tight">¡Counter activo!</p>
             </div>
           )}
 
           {/* Wrong position overlay - only if in wrong position */}
           {isWrongPositionCounter && (
-            <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-orange-500/95 to-red-500/95 text-white text-sm px-2 py-1 rounded-t-xl shadow-lg z-40">
+            <div className="absolute top-0 left-0 right-0 bg-gradient-to-l from-orange-500/95 to-red-500/25 text-white text-sm px-2 py-1 rounded-t-xl shadow-lg z-40">
               <p className="text-center font-bold animate-pulse leading-tight">¡Posición incorrecta!</p>
             </div>
           )}
@@ -297,18 +297,15 @@ const TeamPosition = ({
 
           {/* Enhanced SS Rank Badge - Only show if rank is SS */}
           {character && character.rank === "SS" && (
-            <div className="absolute top-0.5 left-0.5 bg-gradient-to-br from-purple-800 via-purple-900 to-indigo-900 text-white shadow-lg px-2 py-1.5 rounded-lg text-xs font-black border border-yellow-400 transform hover:scale-110 transition-all duration-200 z-40"
-              style={{
-                textShadow: '0 1px 3px rgba(0,0,0,0.9), 0 0 6px rgba(255,255,255,0.5)',
-                boxShadow: '0 6px 20px rgba(139, 69, 19, 0.9), inset 0 1px 0 rgba(255,215,0,0.7), 0 0 15px rgba(255,215,0,0.4)'
-              }}>
-              <div className="flex flex-col items-center gap-0.5">
-                <div className="flex items-center gap-0.5">
-                  <span className="text-yellow-300 font-black text-xs tracking-wider drop-shadow-sm">SS</span>
-                  <div className="w-0.5 h-2.5 bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-full"></div>
-                </div>
-                <span className="text-yellow-200 font-bold text-xs tracking-wide uppercase drop-shadow-sm leading-none">RANK</span>
-              </div>
+            <div className="absolute bottom-0.5 right-0.5 transform hover:scale-110 transition-all duration-200 z-40">
+              <img
+                src="/images/ui/ss.png"
+                alt="SS Rank"
+                className="w-6 h-6 sm:w-8 sm:h-8 drop-shadow-lg hover:drop-shadow-xl transition-all duration-200"
+                style={{
+                  filter: 'drop-shadow(0 0 6px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 3px rgba(255, 255, 255, 0.6))',
+                }}
+              />
             </div>
           )}
         </div>

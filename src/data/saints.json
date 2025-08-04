@@ -7,12 +7,7 @@
     "role": 5,
     "element": 1,
     "rank": "",
-    "counters": [
-      {
-        "id": "65303",
-        "position": "back"
-      }
-    ]
+    "counters": []
   },
   {
     "id": "55201",
@@ -22,7 +17,25 @@
     "role": 1,
     "element": 5,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "55202",
+        "position": "any"
+      },
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "15101",
+        "position": "any"
+      },
+      {
+        "id": "55305",
+        "position": "any"
+      }
+    ],
+    "isFavorite": false
   },
   {
     "id": "55302",
@@ -34,10 +47,19 @@
     "rank": "SS",
     "counters": [
       {
-        "id": "55201",
-        "position": "opposite"
+        "id": "55301",
+        "position": "any"
+      },
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "15302",
+        "position": "any"
       }
-    ]
+    ],
+    "isFavorite": false
   },
   {
     "id": "55308",
@@ -47,7 +69,24 @@
     "role": 3,
     "element": 5,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "55206",
+        "position": "any"
+      },
+      {
+        "id": "65206",
+        "position": "any"
+      },
+      {
+        "id": "35202",
+        "position": "any"
+      },
+      {
+        "id": "55305",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "65101",
@@ -66,7 +105,7 @@
     "image": "images/saints/sds_battleUI_hadisi_mingwang.webp",
     "role": 1,
     "element": 6,
-    "rank": "SS",
+    "rank": "",
     "counters": []
   },
   {
@@ -77,7 +116,24 @@
     "role": 3,
     "element": 6,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "15302",
+        "position": "any"
+      },
+      {
+        "id": "34303",
+        "position": "any"
+      },
+      {
+        "id": "65304",
+        "position": "any"
+      },
+      {
+        "id": "55201",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "65304",
@@ -87,7 +143,24 @@
     "role": 5,
     "element": 6,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "55303",
+        "position": "any"
+      },
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "55201",
+        "position": "any"
+      },
+      {
+        "id": "55305",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "55101",
@@ -97,7 +170,24 @@
     "role": 1,
     "element": 5,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "15302",
+        "position": "any"
+      },
+      {
+        "id": "55305",
+        "position": "any"
+      },
+      {
+        "id": "34303",
+        "position": "any"
+      },
+      {
+        "id": "55202",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "55102",
@@ -127,7 +217,24 @@
     "role": 2,
     "element": 5,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "14302",
+        "position": "any"
+      },
+      {
+        "id": "55306",
+        "position": "any"
+      },
+      {
+        "id": "65304",
+        "position": "any"
+      },
+      {
+        "id": "23101",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "55204",
@@ -137,7 +244,24 @@
     "role": 2,
     "element": 5,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "15302",
+        "position": "any"
+      },
+      {
+        "id": "55101",
+        "position": "any"
+      },
+      {
+        "id": "55306",
+        "position": "any"
+      },
+      {
+        "id": "55302",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "55206",
@@ -147,7 +271,24 @@
     "role": 2,
     "element": 5,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "55306",
+        "position": "any"
+      },
+      {
+        "id": "55101",
+        "position": "any"
+      },
+      {
+        "id": "35201",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "55303",
@@ -157,7 +298,24 @@
     "role": 5,
     "element": 5,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "34303",
+        "position": "any"
+      },
+      {
+        "id": "55202",
+        "position": "any"
+      },
+      {
+        "id": "55301",
+        "position": "any"
+      },
+      {
+        "id": "55305",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "55305",
@@ -167,7 +325,24 @@
     "role": 3,
     "element": 5,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "55306",
+        "position": "any"
+      },
+      {
+        "id": "55101",
+        "position": "any"
+      },
+      {
+        "id": "35201",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "55306",
@@ -177,7 +352,16 @@
     "role": 4,
     "element": 5,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "55202",
+        "position": "any"
+      },
+      {
+        "id": "25302",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "65205",
@@ -227,7 +411,24 @@
     "role": 5,
     "element": 1,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "34303",
+        "position": "any"
+      },
+      {
+        "id": "55304",
+        "position": "any"
+      },
+      {
+        "id": "55305",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "33201",
@@ -247,7 +448,24 @@
     "role": 3,
     "element": 3,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "55202",
+        "position": "any"
+      },
+      {
+        "id": "25301",
+        "position": "any"
+      },
+      {
+        "id": "55204",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "43303",
@@ -267,7 +485,20 @@
     "role": 2,
     "element": 4,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "55305",
+        "position": "any"
+      },
+      {
+        "id": "55303",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "55205",
@@ -277,7 +508,24 @@
     "role": 4,
     "element": 5,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "55307",
+        "position": "any"
+      },
+      {
+        "id": "34303",
+        "position": "any"
+      },
+      {
+        "id": "65304",
+        "position": "any"
+      },
+      {
+        "id": "55305",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "55309",
@@ -297,7 +545,24 @@
     "role": 5,
     "element": 6,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "15302",
+        "position": "any"
+      },
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "65304",
+        "position": "any"
+      },
+      {
+        "id": "55305",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "14203",
@@ -437,7 +702,24 @@
     "role": 5,
     "element": 6,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "65304",
+        "position": "any"
+      },
+      {
+        "id": "15302",
+        "position": "any"
+      },
+      {
+        "id": "55201",
+        "position": "any"
+      },
+      {
+        "id": "55203",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "65305",
@@ -447,7 +729,24 @@
     "role": 3,
     "element": 6,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "55101",
+        "position": "any"
+      },
+      {
+        "id": "14302",
+        "position": "any"
+      },
+      {
+        "id": "55202",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "14202",
@@ -557,7 +856,24 @@
     "role": 3,
     "element": 1,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "55303",
+        "position": "any"
+      },
+      {
+        "id": "55306",
+        "position": "any"
+      },
+      {
+        "id": "34303",
+        "position": "any"
+      },
+      {
+        "id": "65304",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "15101",
@@ -567,7 +883,24 @@
     "role": 1,
     "element": 1,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "55101",
+        "position": "any"
+      },
+      {
+        "id": "15302",
+        "position": "any"
+      },
+      {
+        "id": "55305",
+        "position": "any"
+      },
+      {
+        "id": "55302",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "15202",
@@ -617,7 +950,24 @@
     "role": 5,
     "element": 2,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "25301",
+        "position": "any"
+      },
+      {
+        "id": "15302",
+        "position": "any"
+      },
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "55302",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "25201",
@@ -627,7 +977,24 @@
     "role": 4,
     "element": 2,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "55302",
+        "position": "any"
+      },
+      {
+        "id": "65303",
+        "position": "any"
+      },
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "34303",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "25301",
@@ -637,7 +1004,24 @@
     "role": 4,
     "element": 2,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "55201",
+        "position": "any"
+      },
+      {
+        "id": "25101",
+        "position": "any"
+      },
+      {
+        "id": "23101",
+        "position": "any"
+      },
+      {
+        "id": "35201",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "25302",
@@ -647,7 +1031,24 @@
     "role": 3,
     "element": 2,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "34303",
+        "position": "any"
+      },
+      {
+        "id": "65304",
+        "position": "any"
+      },
+      {
+        "id": "25301",
+        "position": "any"
+      },
+      {
+        "id": "15302",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "25303",
@@ -697,7 +1098,24 @@
     "role": 2,
     "element": 5,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "55306",
+        "position": "any"
+      },
+      {
+        "id": "55305",
+        "position": "any"
+      },
+      {
+        "id": "55302",
+        "position": "any"
+      },
+      {
+        "id": "15302",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "35301",
@@ -707,7 +1125,24 @@
     "role": 3,
     "element": 3,
     "rank": "",
-    "counters": []
+    "counters": [
+      {
+        "id": "55303",
+        "position": "any"
+      },
+      {
+        "id": "55306",
+        "position": "any"
+      },
+      {
+        "id": "25201",
+        "position": "any"
+      },
+      {
+        "id": "25301",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "44101",
@@ -777,7 +1212,24 @@
     "role": 3,
     "element": 4,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "34303",
+        "position": "any"
+      },
+      {
+        "id": "55301",
+        "position": "any"
+      },
+      {
+        "id": "55305",
+        "position": "any"
+      },
+      {
+        "id": "35301",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "55103",
@@ -797,7 +1249,24 @@
     "role": 4,
     "element": 5,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "65304",
+        "position": "any"
+      },
+      {
+        "id": "25301",
+        "position": "any"
+      },
+      {
+        "id": "15302",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "55304",
@@ -812,7 +1281,7 @@
   {
     "id": "55307",
     "name": "Odysseus",
-    "title": "Caballero de Cloth Divina de Fénix",
+    "title": "Caballero de Cloth de Ofiuco",
     "image": "images/saints/sds_battleUI_aodexiusi_shefu.webp",
     "role": 5,
     "element": 5,
@@ -847,7 +1316,24 @@
     "role": 3,
     "element": 6,
     "rank": "SS",
-    "counters": []
+    "counters": [
+      {
+        "id": "55203",
+        "position": "any"
+      },
+      {
+        "id": "55306",
+        "position": "any"
+      },
+      {
+        "id": "25301",
+        "position": "any"
+      },
+      {
+        "id": "15302",
+        "position": "any"
+      }
+    ]
   },
   {
     "id": "13101",
