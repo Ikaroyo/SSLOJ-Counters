@@ -47,19 +47,19 @@ const App = () => {
   // Constants
   const roleNames = {
     1: "Protector",
-    2: "Guerrero",
-    3: "Habilidad",
-    4: "Asesino",
-    5: "Asistente"
+    2: "Warrior",
+    3: "Skilled",
+    4: "Assassin",
+    5: "Assist"
   };
 
   const elementNames = {
-    1: "Agua",
-    2: "Fuego",
-    3: "Aire",
-    4: "Tierra",
-    5: "Luz",
-    6: "Oscuridad"
+    1: "Water",
+    2: "Fire",
+    3: "Air",
+    4: "Earth",
+    5: "Light",
+    6: "Darkness"
   };
 
   const roleColors = {
@@ -94,26 +94,24 @@ const App = () => {
 
   useEffect(() => {
     const loadCharacters = () => {
+      // Always save the JSON data to localStorage on page load
+      localStorage.setItem('ssloj-characters', JSON.stringify(saintsData));
+      
       const savedCharacters = localStorage.getItem('ssloj-characters');
       let charactersToLoad = saintsData;
-
+      
       if (savedCharacters) {
         try {
           const parsed = JSON.parse(savedCharacters);
-          const savedIds = new Set(parsed.map(char => char.id));
-          const newCharacters = saintsData.filter(char => !savedIds.has(char.id));
-
-          if (newCharacters.length > 0) {
-            charactersToLoad = [...parsed, ...newCharacters];
-          } else {
-            charactersToLoad = parsed;
-          }
+          charactersToLoad = parsed;
         } catch (error) {
           console.error('Error parsing saved characters:', error);
           charactersToLoad = saintsData;
+          // Re-save the original data if there's an error
+          localStorage.setItem('ssloj-characters', JSON.stringify(saintsData));
         }
       }
-
+      
       setCharacters(charactersToLoad);
       setFilteredCharacters(charactersToLoad);
     };

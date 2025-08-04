@@ -74,7 +74,7 @@ const JsonEditor = ({
 
   const addCounterToEdit = () => {
     const newIndex = (editForm.counters || []).length;
-    const newCounters = [...(editForm.counters || []), { id: "", position: "opposite" }];
+    const newCounters = [...(editForm.counters || []), { id: "", position: "opposite", weight: 1 }];
     setEditForm({ ...editForm, counters: newCounters });
     setSearchTerms({ ...searchTerms, [newIndex]: "" });
     setShowDropdowns({ ...showDropdowns, [newIndex]: false });
@@ -425,6 +425,26 @@ const JsonEditor = ({
                               </select>
                             </div>
 
+                            {/* Weight Selection */}
+                            <div className="flex-shrink-0 w-24">
+                              <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">
+                                Peso
+                              </label>
+                              <select
+                                value={counter.weight || 1}
+                                onChange={(e) => updateCounterInEdit(index, 'weight', parseFloat(e.target.value))}
+                                className="w-full px-3 py-3 border rounded-lg text-sm dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                title="Efectividad del counter (1=normal, 2=muy efectivo, 0.5=poco efectivo)"
+                              >
+                                <option value="0.5">0.5x</option>
+                                <option value="1">1x</option>
+                                <option value="1.5">1.5x</option>
+                                <option value="2">2x</option>
+                                <option value="2.5">2.5x</option>
+                                <option value="3">3x</option>
+                              </select>
+                            </div>
+
                             {/* Remove Button */}
                             <div className="flex-shrink-0">
                               <button
@@ -462,6 +482,20 @@ const JsonEditor = ({
                                       {counter.position === 'any' ? 'Cualquiera' :
                                         counter.position === 'opposite' ? 'Opuesto' :
                                           counter.position === 'front' ? 'Frente' : 'Atrás'}
+                                    </div>
+                                    <div className="font-medium mt-1">Efectividad:</div>
+                                    <div className={`font-bold ${
+                                      counter.weight >= 2 ? 'text-green-600 dark:text-green-400' :
+                                      counter.weight >= 1.5 ? 'text-yellow-600 dark:text-yellow-400' :
+                                      counter.weight === 1 ? 'text-blue-600 dark:text-blue-400' :
+                                      'text-red-600 dark:text-red-400'
+                                    }`}>
+                                      {counter.weight}x {
+                                        counter.weight >= 2 ? '(Muy Efectivo)' :
+                                        counter.weight >= 1.5 ? '(Efectivo)' :
+                                        counter.weight === 1 ? '(Normal)' :
+                                        '(Poco Efectivo)'
+                                      }
                                     </div>
                                   </div>
                                 </div>
@@ -513,7 +547,9 @@ const JsonEditor = ({
                       Si el enemigo usa este → Yo debo usar: {
                         (character.counters || []).map(c => {
                           const counterChar = characters.find(ch => ch.id === c.id);
-                          return counterChar ? `${counterChar.name}(${c.position})` : c.id;
+                          const weight = c.weight || 1;
+                          const weightDisplay = weight !== 1 ? ` (${weight}x)` : '';
+                          return counterChar ? `${counterChar.name}(${c.position})${weightDisplay}` : c.id;
                         }).join(', ') || 'Ninguno'
                       }
                     </div>

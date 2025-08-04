@@ -1,7 +1,7 @@
 import React from "react";
 import { Sword, Shield, Target, Save, Search, Filter, Image as ImageIcon, X, Star } from "lucide-react";
 import TeamPosition from './TeamPosition';
-import { getCounterSuggestions } from '../utils/counterLogic';
+import { getCounterSuggestions, calculateTeamElementBonus } from '../utils/counterLogic';
 import { exportTeamAsImage } from '../utils/imageExport';
 
 const TeamBuilder = ({
@@ -94,22 +94,30 @@ const TeamBuilder = ({
     }
   };
 
-  // Get counter suggestions for enemy team
-  const getCounterSuggestions = () => {
-    const suggestions = [];
+  // Get counter suggestions for enemy team - Modified to group by counter character
+  const getCounterSuggestionsFromTeam = () => {
+    const counterMap = new Map(); // Group by counter character ID
 
     // Process front line enemies
-    enemyTeam.front.forEach((enemyChar, frontIndex) => {
+    (enemyTeam.front || []).forEach((enemyChar, frontIndex) => {
       if (enemyChar && enemyChar.counters && enemyChar.counters.length > 0) {
         enemyChar.counters.forEach(counter => {
           const counterChar = characters.find(c => c.id === counter.id);
           if (counterChar) {
-            suggestions.push({
+            if (!counterMap.has(counter.id)) {
+              counterMap.set(counter.id, {
+                counter: counterChar,
+                position: counter.position, // Use the first position found
+                targets: []
+              });
+            }
+            
+            counterMap.get(counter.id).targets.push({
               enemy: enemyChar,
-              counter: counterChar,
-              position: counter.position,
               enemyPosition: 'front',
-              enemyIndex: frontIndex
+              enemyIndex: frontIndex,
+              position: counter.position,
+              weight: counter.weight || 1 // Include weight from counter data
             });
           }
         });
@@ -117,31 +125,45 @@ const TeamBuilder = ({
     });
 
     // Process back line enemies
-    enemyTeam.back.forEach((enemyChar, backIndex) => {
+    (enemyTeam.back || []).forEach((enemyChar, backIndex) => {
       if (enemyChar && enemyChar.counters && enemyChar.counters.length > 0) {
         enemyChar.counters.forEach(counter => {
           const counterChar = characters.find(c => c.id === counter.id);
           if (counterChar) {
-            suggestions.push({
+            if (!counterMap.has(counter.id)) {
+              counterMap.set(counter.id, {
+                counter: counterChar,
+                position: counter.position,
+                targets: []
+              });
+            }
+            
+            counterMap.get(counter.id).targets.push({
               enemy: enemyChar,
-              counter: counterChar,
-              position: counter.position,
               enemyPosition: 'back',
-              enemyIndex: backIndex
+              enemyIndex: backIndex,
+              position: counter.position,
+              weight: counter.weight || 1 // Include weight from counter data
             });
           }
         });
       }
     });
 
-    return suggestions;
+    // Convert map to array format
+    return Array.from(counterMap.values()).map(suggestion => ({
+      ...suggestion,
+      enemy: suggestion.targets[0].enemy, // For backward compatibility
+      enemyPosition: suggestion.targets[0].enemyPosition,
+      enemyIndex: suggestion.targets[0].enemyIndex
+    }));
   };
 
-  const counterSuggestions = getCounterSuggestions();
+  const counterSuggestions = getCounterSuggestionsFromTeam();
 
   // Check if a counter suggestion has been fulfilled
   const isCounterFulfilled = (suggestion) => {
-    const myTeamCharacters = [...team.front, ...team.back].filter(Boolean);
+    const myTeamCharacters = [...(team.front || []), ...(team.back || [])].filter(Boolean);
 
     // First check if the counter character is in the team
     const counterInTeam = myTeamCharacters.find(char => char.id === suggestion.counter.id);
@@ -155,7 +177,7 @@ const TeamBuilder = ({
     let actualIndex = -1;
 
     // Check front line
-    team.front.forEach((char, index) => {
+    (team.front || []).forEach((char, index) => {
       if (char && char.id === suggestion.counter.id) {
         actualPosition = 'front';
         actualIndex = index;
@@ -164,7 +186,7 @@ const TeamBuilder = ({
 
     // Check back line if not found in front
     if (actualPosition === null) {
-      team.back.forEach((char, index) => {
+      (team.back || []).forEach((char, index) => {
         if (char && char.id === suggestion.counter.id) {
           actualPosition = 'back';
           actualIndex = index;
@@ -202,7 +224,7 @@ const TeamBuilder = ({
 
     // Check if this position already has a character
     const currentTeam = team;
-    const hasCharacter = position === 'front' ? currentTeam.front[index] : currentTeam.back[index];
+    const hasCharacter = position === 'front' ? (currentTeam.front && currentTeam.front[index]) : (currentTeam.back && currentTeam.back[index]);
     if (hasCharacter) return false; // Don't highlight if position is occupied
 
     return unfulfilledSuggestions.some(suggestion => {
@@ -234,7 +256,7 @@ const TeamBuilder = ({
 
     // Check if this position already has a character
     const currentTeam = team;
-    const hasCharacter = position === 'front' ? currentTeam.front[index] : currentTeam.back[index];
+    const hasCharacter = position === 'front' ? (currentTeam.front && currentTeam.front[index]) : (currentTeam.back && currentTeam.back[index]);
 
     // If position has a character, check if it fulfills any counter suggestion
     if (hasCharacter) {
@@ -323,36 +345,36 @@ const TeamBuilder = ({
 
   // Add these helper functions if they don't exist
   const addToTeam = (character, position, index = null) => {
-    const isInTeam = [...team.front, ...team.back].some(char => char && char.id === character.id);
+    const isInTeam = [...(team.front || []), ...(team.back || [])].some(char => char && char.id === character.id);
     if (isInTeam) {
       alert('Este santo ya está en tu equipo');
       return;
     }
 
     if (position === "front" && index !== null && index < 2) {
-      const newFront = [...team.front];
+      const newFront = [...(team.front || [])];
       newFront[index] = character;
       setTeam((prev) => ({ ...prev, front: newFront }));
     } else if (position === "back" && index !== null && index < 3) {
-      const newBack = [...team.back];
+      const newBack = [...(team.back || [])];
       newBack[index] = character;
       setTeam((prev) => ({ ...prev, back: newBack }));
     }
   };
 
   const addToEnemyTeam = (character, position, index = null) => {
-    const isInEnemyTeam = [...enemyTeam.front, ...enemyTeam.back].some(char => char && char.id === character.id);
+    const isInEnemyTeam = [...(enemyTeam.front || []), ...(enemyTeam.back || [])].some(char => char && char.id === character.id);
     if (isInEnemyTeam) {
       alert('Este santo ya está en el equipo enemigo');
       return;
     }
 
     if (position === "front" && index !== null && index < 2) {
-      const newFront = [...enemyTeam.front];
+      const newFront = [...(enemyTeam.front || [])];
       newFront[index] = character;
       setEnemyTeam((prev) => ({ ...prev, front: newFront }));
     } else if (position === "back" && index !== null && index < 3) {
-      const newBack = [...enemyTeam.back];
+      const newBack = [...(enemyTeam.back || [])];
       newBack[index] = character;
       setEnemyTeam((prev) => ({ ...prev, back: newBack }));
     }
@@ -363,7 +385,7 @@ const TeamBuilder = ({
     if (isEnemy) return false; // Enemy team doesn't fulfill counters
 
     const currentTeam = team;
-    const hasCharacter = position === 'front' ? currentTeam.front[index] : currentTeam.back[index];
+    const hasCharacter = position === 'front' ? (currentTeam.front && currentTeam.front[index]) : (currentTeam.back && currentTeam.back[index]);
     if (!hasCharacter) return false;
 
     // Check if this character fulfills any counter suggestion
@@ -377,7 +399,7 @@ const TeamBuilder = ({
     const { counter, position, enemyPosition, enemyIndex } = suggestion;
 
     // Check if counter character is available in our team
-    const isInTeam = [...team.front, ...team.back].some(char => char && char.id === counter.id);
+    const isInTeam = [...(team.front || []), ...(team.back || [])].some(char => char && char.id === counter.id);
     if (isInTeam) {
       alert(`${counter.name} ya está en tu equipo. Muévelo a la posición correcta manualmente.`);
       return;
@@ -391,14 +413,14 @@ const TeamBuilder = ({
     switch (position) {
       case 'front':
         // Find first empty front position
-        targetIndex = team.front.findIndex(pos => pos === null);
+        targetIndex = (team.front || []).findIndex(pos => pos === null);
         if (targetIndex !== -1) {
           targetPosition = 'front';
         }
         break;
       case 'back':
         // Find first empty back position
-        targetIndex = team.back.findIndex(pos => pos === null);
+        targetIndex = (team.back || []).findIndex(pos => pos === null);
         if (targetIndex !== -1) {
           targetPosition = 'back';
         }
@@ -407,13 +429,13 @@ const TeamBuilder = ({
         // Place in exact same position as enemy character
         if (enemyPosition === 'front') {
           // Enemy is in front, place counter in same front position
-          if (team.front[enemyIndex] === null) {
+          if (team.front && team.front[enemyIndex] === null) {
             targetPosition = 'front';
             targetIndex = enemyIndex;
           }
         } else {
           // Enemy is in back, place counter in same back position
-          if (team.back[enemyIndex] === null) {
+          if (team.back && team.back[enemyIndex] === null) {
             targetPosition = 'back';
             targetIndex = enemyIndex;
           }
@@ -424,13 +446,13 @@ const TeamBuilder = ({
         actualPosition = 'opposite';
         if (enemyPosition === 'front') {
           // Enemy is in front, try to place counter in same front position
-          if (team.front[enemyIndex] === null) {
+          if (team.front && team.front[enemyIndex] === null) {
             targetPosition = 'front';
             targetIndex = enemyIndex;
           }
         } else {
           // Enemy is in back, try to place counter in same back position
-          if (team.back[enemyIndex] === null) {
+          if (team.back && team.back[enemyIndex] === null) {
             targetPosition = 'back';
             targetIndex = enemyIndex;
           }
@@ -439,11 +461,11 @@ const TeamBuilder = ({
         // If opposite position is not available, find any empty position
         if (targetPosition === null) {
           actualPosition = 'any'; // Reset to any since opposite wasn't available
-          targetIndex = team.front.findIndex(pos => pos === null);
+          targetIndex = (team.front || []).findIndex(pos => pos === null);
           if (targetIndex !== -1) {
             targetPosition = 'front';
           } else {
-            targetIndex = team.back.findIndex(pos => pos === null);
+            targetIndex = (team.back || []).findIndex(pos => pos === null);
             if (targetIndex !== -1) {
               targetPosition = 'back';
             }
@@ -455,11 +477,11 @@ const TeamBuilder = ({
     if (targetPosition && targetIndex !== -1) {
       // Add character to team at correct position
       if (targetPosition === 'front') {
-        const newFront = [...team.front];
+        const newFront = [...(team.front || [])];
         newFront[targetIndex] = counter;
         setTeam(prev => ({ ...prev, front: newFront }));
       } else {
-        const newBack = [...team.back];
+        const newBack = [...(team.back || [])];
         newBack[targetIndex] = counter;
         setTeam(prev => ({ ...prev, back: newBack }));
       }
@@ -492,54 +514,12 @@ const TeamBuilder = ({
     }
   };
 
+  // Calculate team bonuses
+  const myTeamBonus = calculateTeamElementBonus(team);
+  const enemyTeamBonus = calculateTeamElementBonus(enemyTeam);
+
   return (
     <div className="mb-8 p-4 sm:p-6 bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 rounded-xl shadow-lg dark:shadow-slate-900/50 border border-gray-200 dark:border-slate-700">
-      {/* Add CSS for glowing animations */}
-      <style jsx global>{`
-        @keyframes glow-green-pulse {
-          0%, 100% {
-            box-shadow: 0 0 20px rgba(34, 197, 94, 0.6), 0 0 40px rgba(34, 197, 94, 0.3), 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-            border-color: rgb(34 197 94) !important;
-          }
-          50% {
-            box-shadow: 0 0 30px rgba(34, 197, 94, 0.8), 0 0 60px rgba(34, 197, 94, 0.4), 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-            border-color: rgb(34 197 94) !important;
-          }
-        }
-        
-        @keyframes glow-orange-pulse {
-          0%, 100% {
-            box-shadow: 0 0 20px rgba(251, 146, 60, 0.6), 0 0 40px rgba(251, 146, 60, 0.3), 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-            border-color: rgb(251 146 60) !important;
-          }
-          50% {
-            box-shadow: 0 0 30px rgba(251, 146, 60, 0.8), 0 0 60px rgba(251, 146, 60, 0.4), 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-            border-color: rgb(251 146 60) !important;
-          }
-        }
-        
-        .glow-green {
-          animation: glow-green-pulse 2s ease-in-out infinite !important;
-          border-width: 2px !important;
-          border-style: dashed !important;
-        }
-        
-        .glow-orange {
-          animation: glow-orange-pulse 2s ease-in-out infinite !important;
-          border-width: 2px !important;
-          border-style: dashed !important;
-        }
-
-        /* Dark mode variants */
-        .dark .glow-green {
-          animation: glow-green-pulse 2s ease-in-out infinite !important;
-        }
-        
-        .dark .glow-orange {
-          animation: glow-orange-pulse 2s ease-in-out infinite !important;
-        }
-      `}</style>
-
       <div className="flex justify-between items-center mb-4 sm:mb-6">
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-slate-100 text-center">
           Formación de Equipos
@@ -645,112 +625,40 @@ const TeamBuilder = ({
         </div>
 
         {/* Characters Grid for Team Building */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-2 max-h-60 overflow-y-auto bg-gray-50 dark:bg-slate-800/50 p-3 rounded-lg border-2 border-dashed border-gray-300 dark:border-slate-600">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-2 max-h-60 overflow-y-auto bg-gray-50 dark:bg-gray-700 p-3 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
           {filteredCharacters.slice(0, 50).map((character) => (
             <div
               key={character.id}
-              className={`relative group cursor-pointer bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl dark:shadow-slate-900/50 transition-all duration-300 hover:scale-105 border-2 ${selectedCharacter?.id === character.id
-                ? 'border-blue-500 dark:border-blue-400 ring-2 ring-blue-300 dark:ring-blue-600'
-                : 'border-gray-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-500'
-                }`}
+              className="relative group cursor-pointer bg-white dark:bg-gray-800 rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 border border-gray-100 dark:border-gray-600"
               draggable
               onDragStart={(e) => handleDragStart(e, character)}
-              onClick={() => handleCharacterSelect(character)}
-              title={`${character.name} - ${character.title}`}
+              title={`${character.name} - Counters: ${character.counters?.length || 0}`}
             >
-              {/* Selection indicator */}
-              {selectedCharacter?.id === character.id && (
-                <div className="absolute inset-0 bg-blue-500/20 flex items-center justify-center z-20">
-                  <div className="bg-blue-600 text-white px-2 py-1 rounded-lg text-xs font-bold shadow-lg">
-                    SELECCIONADO
-                  </div>
+              <img
+                src={character.image}
+                alt={character.name}
+                className="w-full h-12 sm:h-16 object-cover rounded"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 rounded-b opacity-0 group-hover:opacity-100 transition-opacity">
+                <p className="truncate text-center">{character.name}</p>
+                <p className="text-center text-xs">Counters: {character.counters?.length || 0}</p>
+              </div>
+              <div className="absolute top-1 right-1 flex gap-1">
+                <RoleIcon role={character.role} className="w-3 h-3" />
+                <ElementIcon element={character.element} className="w-3 h-3" />
+              </div>
+              {/* Counter indicator */}
+              {character.counters && character.counters.length > 0 && (
+                <div className="absolute top-1 left-1 bg-green-500 text-white text-xs px-1 rounded-full text-center min-w-[16px] h-4 flex items-center justify-center">
+                  {character.counters.length}
                 </div>
               )}
-
-              {/* Character Image */}
-              <div className="relative aspect-square">
-                <img
-                  src={character.image}
-                  alt={character.name}
-                  className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
-                />
-
-                {/* Dark gradient overlay for better text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                {/* Role and Element badges with dark mask */}
-                <div className="absolute top-1 right-1 flex flex-col gap-1">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-black/60 rounded-full" />
-                    <div className="relative p-1 rounded-full">
-                      <RoleIcon role={character.role} className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </div>
-                  </div>
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-black/60 rounded-full" />
-                    <div className="relative p-1 rounded-full">
-                      <ElementIcon element={character.element} className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </div>
-                  </div>
+              {/* Favorite indicator */}
+              {character.isFavorite && (
+                <div className="absolute top-1 left-1 bg-yellow-400 text-white rounded-full p-0.5">
+                  <Star size={8} fill="currentColor" />
                 </div>
-
-                {/* Enhanced SS Rank Badge - Only show if rank is SS */}
-                {character.rank === "SS" && (
-                  <div className="absolute top-1 left-1 transform hover:scale-110 transition-all duration-200 z-30">
-                    <img
-                      src="/images/ui/ss.png"
-                      alt="SS Rank"
-                      className="w-8 h-8 sm:w-10 sm:h-10 drop-shadow-lg hover:drop-shadow-xl transition-all duration-200"
-                      style={{
-                        filter: 'drop-shadow(0 0 8px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.6))',
-                      }}
-                    />
-                  </div>
-                )}
-
-                {/* Favorite indicator - Position adjusted to not conflict with SS badge */}
-                {character.isFavorite && (
-                  <div className={`absolute ${character.rank === "SS" ? 'top-1 right-1' : 'top-1 left-1'} bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-500 text-white rounded-full p-1.5 shadow-lg border-2 border-yellow-300 z-20`}
-                    style={{
-                      boxShadow: '0 4px 12px rgba(255, 193, 7, 0.6), inset 0 1px 0 rgba(255,255,255,0.4)'
-                    }}>
-                    <Star size={10} fill="currentColor" className="drop-shadow-sm" />
-                  </div>
-                )}
-
-                {/* Counter indicator */}
-                {character.counters && character.counters.length > 0 && (
-                  <div className={`absolute ${character.rank === "SS" || character.isFavorite ? 'top-12' : 'top-1'} right-1 bg-emerald-500 text-white text-xs px-1.5 py-0.5 rounded-full font-bold shadow-lg border border-white/20 z-20`}>
-                    {character.counters.length}
-                  </div>
-                )}
-
-                {/* Character info overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent text-white p-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <h6 className="font-bold text-xs truncate">{character.name}</h6>
-                  <p className="text-xs opacity-90 truncate">{character.title}</p>
-                  <div className="flex items-center justify-between mt-1">
-                    <span className="text-xs bg-white/20 px-1 rounded">
-                      {roleNames[character.role]}
-                    </span>
-                    <span className="text-xs bg-white/20 px-1 rounded">
-                      {elementNames[character.element]}
-                    </span>
-                  </div>
-                  {character.counters && character.counters.length > 0 && (
-                    <p className="text-xs text-emerald-300 mt-1">
-                      {character.counters.length} counter{character.counters.length !== 1 ? 's' : ''}
-                    </p>
-                  )}
-                </div>
-
-                {/* Drag indicator */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 bg-blue-500/20 backdrop-blur-sm">
-                  <div className="bg-blue-600 text-white px-2 py-1 rounded-lg text-xs font-bold shadow-lg">
-                    Arrastrar
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
           ))}
         </div>
@@ -1050,6 +958,53 @@ const TeamBuilder = ({
         </div>
       </div>
 
+      {/* Team Bonuses Display - Moved below teams */}
+      <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+        {/* My Team Bonus */}
+        <div className="bg-blue-50 dark:bg-blue-900/20 dark:border dark:border-slate-700 rounded-lg p-4">
+          <h5 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-2 text-center">
+            Bonus de Mi Equipo
+          </h5>
+          <div className="text-center">
+            <p className="text-sm text-gray-700 dark:text-slate-300 mb-2">
+              {myTeamBonus.description}
+            </p>
+            {myTeamBonus.damage > 0 && (
+              <div className="flex justify-center gap-4">
+                <span className="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-2 py-1 rounded text-sm font-bold">
+                  +{myTeamBonus.damage}% Daño
+                </span>
+                <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-2 py-1 rounded text-sm font-bold">
+                  +{myTeamBonus.hp}% PV
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Enemy Team Bonus */}
+        <div className="bg-red-50 dark:bg-red-900/20 dark:border dark:border-slate-700 rounded-lg p-4">
+          <h5 className="text-lg font-semibold text-red-600 dark:text-red-400 mb-2 text-center">
+            Bonus del Equipo Enemigo
+          </h5>
+          <div className="text-center">
+            <p className="text-sm text-gray-700 dark:text-slate-300 mb-2">
+              {enemyTeamBonus.description}
+            </p>
+            {enemyTeamBonus.damage > 0 && (
+              <div className="flex justify-center gap-4">
+                <span className="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-2 py-1 rounded text-sm font-bold">
+                  +{enemyTeamBonus.damage}% Daño
+                </span>
+                <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-2 py-1 rounded text-sm font-bold">
+                  +{enemyTeamBonus.hp}% PV
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
       {/* Counter Suggestions */}
       <div className="mt-6 sm:mt-8">
         <h4 className="text-xl font-bold mb-6 text-gray-800 dark:text-slate-100 flex items-center gap-2 justify-center">
@@ -1059,7 +1014,156 @@ const TeamBuilder = ({
 
         {/* Counter Strategy Section */}
         {counterSuggestions.length > 0 && (
-          <div className="mb-6 space-y-4">
+          <div className="mb-6 space-y-6">
+            {/* Multi-Target Counters (High Priority) */}
+            {unfulfilledSuggestions.filter(s => s.targets && s.targets.length > 1).length > 0 && (
+              <div className="bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-xl p-6 border-2 border-purple-300 dark:border-purple-500/70 shadow-lg">
+                <h5 className="text-xl font-bold text-purple-800 dark:text-purple-200 mb-4 flex items-center gap-3">
+                  <div className="bg-purple-600 text-white rounded-full p-2">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zM7 10a1 1 0 000 2h3a1 1 0 100-2H7z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  Counters Multi-Target ({unfulfilledSuggestions.filter(s => s.targets && s.targets.length > 1).length})
+                  <span className="text-sm bg-purple-200 dark:bg-purple-700 text-purple-800 dark:text-purple-200 px-2 py-1 rounded-full">¡MÁXIMA PRIORIDAD!</span>
+                </h5>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {unfulfilledSuggestions.filter(s => s.targets && s.targets.length > 1).map((suggestion, index) => (
+                    <div key={`multi-${index}`} className="bg-white dark:bg-slate-800 rounded-xl p-4 border-2 border-purple-400 dark:border-purple-500/70 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
+                      <div className="flex items-start gap-3 mb-3">
+                        <div className="relative">
+                          <img
+                            src={suggestion.counter.image}
+                            alt={suggestion.counter.name}
+                            className="w-20 h-20 rounded-lg object-cover border-2 border-purple-400 shadow-md cursor-pointer hover:ring-2 hover:ring-green-400 transition-all duration-200"
+                            onClick={() => handleAutoAssignCounter(suggestion)}
+                            title={`Click para asignar automáticamente ${suggestion.counter.name}`}
+                          />
+                          <div className="absolute -bottom-2 -right-2 bg-purple-600 text-white rounded-full p-1 cursor-pointer hover:bg-purple-700 transition-colors"
+                            onClick={() => handleAutoAssignCounter(suggestion)}
+                            title="Asignar automáticamente">
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <h6 className="font-bold text-purple-800 dark:text-purple-200 mb-1">
+                            {suggestion.counter.name}
+                          </h6>
+                          <p className="text-sm text-purple-600 dark:text-purple-300 mb-2">
+                            {suggestion.counter.title}
+                          </p>
+                          <div className="bg-purple-100 dark:bg-purple-900/30 rounded-lg p-2 mb-2">
+                            <p className="text-sm font-bold text-purple-700 dark:text-purple-300 mb-2">
+                              🎯 Contrarresta {suggestion.targets.length} enemigos:
+                            </p>
+                            <div className="space-y-1">
+                              {suggestion.targets.map((target, idx) => (
+                                <div key={idx} className="flex items-center gap-2">
+                                  <img
+                                    src={target.enemy.image}
+                                    alt={target.enemy.name}
+                                    className="w-6 h-6 rounded object-cover border border-purple-300"
+                                  />
+                                  <span className="text-xs text-purple-600 dark:text-purple-300 font-medium">
+                                    {target.enemy.name} - {target.enemy.title}
+                                  </span>
+                                  <span className="text-xs bg-purple-200 dark:bg-purple-800 text-purple-700 dark:text-purple-200 px-1 rounded">
+                                    {target.enemyPosition === 'front' ? `F${target.enemyIndex + 1}` : `B${target.enemyIndex + 3}`}
+                                  </span>
+                                  {/* Weight/Effectiveness indicator */}
+                                  <span className={`text-xs font-bold px-1 rounded ${
+                                    target.weight >= 2 ? 'bg-green-200 dark:bg-green-800 text-green-800 dark:text-green-200' :
+                                    target.weight >= 1.5 ? 'bg-yellow-200 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-200' :
+                                    target.weight === 1 ? 'bg-blue-200 dark:bg-blue-800 text-blue-800 dark:text-blue-200' :
+                                    'bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200'
+                                  }`}>
+                                    {target.weight}x
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-2">
+                            <p className="text-sm font-bold text-blue-700 dark:text-blue-300">
+                              📍 Posición: {
+                                suggestion.position === 'front' ? 'Línea Delantera' :
+                                  suggestion.position === 'back' ? 'Línea Trasera' :
+                                    suggestion.position === 'opposite' ? 'Posición Opuesta' :
+                                      'Cualquier Posición'
+                              }
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Single Target Counters */}
+            {unfulfilledSuggestions.filter(s => !s.targets || s.targets.length <= 1).length > 0 && (
+              <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg p-6 border-2 border-yellow-300 dark:border-yellow-500/70 shadow-lg">
+                <h5 className="text-xl font-bold text-yellow-800 dark:text-yellow-200 mb-4 flex items-center gap-3">
+                  <Target size={28} className="animate-pulse" />
+                  Counters Específicos ({unfulfilledSuggestions.filter(s => !s.targets || s.targets.length <= 1).length})
+                </h5>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {unfulfilledSuggestions.filter(s => !s.targets || s.targets.length <= 1).map((suggestion, index) => (
+                    <div key={`single-${index}`} className="bg-white dark:bg-slate-800 rounded-xl p-4 border-2 border-yellow-400 dark:border-yellow-500/70 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
+                      <div className="flex items-center gap-3 mb-3">
+                        <img
+                          src={suggestion.enemy.image}
+                          alt={suggestion.enemy.name}
+                          className="w-16 h-16 rounded-lg object-cover border-2 border-red-400 shadow-md"
+                        />
+                        <span className="text-lg font-bold text-gray-600 dark:text-gray-300">VS</span>
+                        <div className="relative">
+                          <img
+                            src={suggestion.counter.image}
+                            alt={suggestion.counter.name}
+                            className="w-16 h-16 rounded-lg object-cover border-2 border-orange-400 shadow-md cursor-pointer hover:ring-2 hover:ring-green-400 transition-all duration-200"
+                            onClick={() => handleAutoAssignCounter(suggestion)}
+                            title={`Click para asignar automáticamente ${suggestion.counter.name}`}
+                          />
+                          <div className="absolute -bottom-1 -right-1 bg-green-500 text-white rounded-full p-1 cursor-pointer hover:bg-green-600 transition-colors"
+                            onClick={() => handleAutoAssignCounter(suggestion)}
+                            title="Asignar automáticamente">
+                            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-sm font-semibold text-gray-700 dark:text-slate-200 mb-2">
+                        <strong className="text-red-600 dark:text-red-400">{suggestion.enemy.name}</strong>
+                        <span className="mx-2">→</span>
+                        <strong className="text-orange-600 dark:text-orange-400">{suggestion.counter.name}</strong>
+                        {/* Show weight for single target counters */}
+                        {suggestion.targets && suggestion.targets[0] && suggestion.targets[0].weight && (
+                          <span className={`ml-2 text-xs font-bold px-2 py-1 rounded ${
+                            suggestion.targets[0].weight >= 2 ? 'bg-green-200 dark:bg-green-800 text-green-800 dark:text-green-200' :
+                            suggestion.targets[0].weight >= 1.5 ? 'bg-yellow-200 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-200' :
+                            suggestion.targets[0].weight === 1 ? 'bg-blue-200 dark:bg-blue-800 text-blue-800 dark:text-blue-200' :
+                            'bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200'
+                          }`}>
+                            {suggestion.targets[0].weight}x {
+                              suggestion.targets[0].weight >= 2 ? 'Muy Efectivo' :
+                              suggestion.targets[0].weight >= 1.5 ? 'Efectivo' :
+                              suggestion.targets[0].weight === 1 ? 'Normal' :
+                              'Poco Efectivo'
+                            }
+                          </span>
+                        )}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Fulfilled Suggestions */}
             {fulfilledSuggestions.length > 0 && (
               <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg p-4 border border-green-200 dark:border-green-700/50">
@@ -1079,83 +1183,46 @@ const TeamBuilder = ({
                       </div>
                       <div className="flex items-center gap-2 mb-2">
                         <img
-                          src={suggestion.enemy.image}
-                          alt={suggestion.enemy.name}
-                          className="w-20 h-20 rounded object-cover border-2 border-red-300"
-                        />
-                        <span className="text-sm text-gray-600 dark:text-gray-300">vs</span>
-                        <img
                           src={suggestion.counter.image}
                           alt={suggestion.counter.name}
-                          className="w-20 h-20 rounded object-cover border-2 border-green-300"
+                          className="w-16 h-16 rounded object-cover border-2 border-green-300"
                         />
-                      </div>
-                      <p className="text-xs text-gray-700 dark:text-slate-300">
-                        <strong>{suggestion.enemy.name} - {suggestion.enemy.title}</strong> → <strong className="text-green-600 dark:text-green-400">{suggestion.counter.name} - {suggestion.counter.title} ✓</strong>
-                      </p>
-                      <p className="text-xs text-green-600 dark:text-green-400 mt-1 font-semibold">
-                        ¡Completado!
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Unfulfilled Suggestions */}
-            {unfulfilledSuggestions.length > 0 && (
-              <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg p-6 border-2 border-yellow-300 dark:border-yellow-500/70 shadow-lg">
-                <h5 className="text-xl font-bold text-yellow-800 dark:text-yellow-200 mb-4 flex items-center gap-3">
-                  <Target size={28} className="animate-pulse" />
-                  Estrategias Pendientes ({unfulfilledSuggestions.length})
-                </h5>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {unfulfilledSuggestions.map((suggestion, index) => (
-                    <div key={`unfulfilled-${index}`} className="bg-white dark:bg-slate-800 rounded-xl p-4 border-2 border-yellow-400 dark:border-yellow-500/70 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
-                      <div className="flex items-center gap-3 mb-3">
-                        <img
-                          src={suggestion.enemy.image}
-                          alt={suggestion.enemy.name}
-                          className="w-20 h-20 rounded-lg object-cover border-2 border-red-400 shadow-md"
-                        />
-                        <span className="text-lg font-bold text-gray-600 dark:text-gray-300">VS</span>
-                        <div className="relative">
-                          <img
-                            src={suggestion.counter.image}
-                            alt={suggestion.counter.name}
-                            className="w-20 h-20 rounded-lg object-cover border-2 border-orange-400 shadow-md cursor-pointer hover:ring-2 hover:ring-green-400 transition-all duration-200"
-                            onClick={() => handleAutoAssignCounter(suggestion)}
-                            title={`Click para asignar automáticamente ${suggestion.counter.name}`}
-                          />
-                          <div className="absolute -bottom-2 -right-2 bg-green-500 text-white rounded-full p-1 cursor-pointer hover:bg-green-600 transition-colors"
-                            onClick={() => handleAutoAssignCounter(suggestion)}
-                            title="Asignar automáticamente">
-                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />
-                            </svg>
-                          </div>
+                        <div className="flex-1">
+                          <p className="text-xs font-bold text-green-600 dark:text-green-400">
+                            {suggestion.counter.name} ✓
+                          </p>
+                          {suggestion.targets && suggestion.targets.length > 1 ? (
+                            <p className="text-xs text-gray-600 dark:text-gray-400">
+                              Contrarresta {suggestion.targets.length} enemigos
+                            </p>
+                          ) : (
+                            <p className="text-xs text-gray-600 dark:text-gray-400">
+                              vs {suggestion.enemy.name}
+                            </p>
+                          )}
                         </div>
                       </div>
-                      <p className="text-sm font-semibold text-gray-700 dark:text-slate-200 mb-2">
-                        <strong className="text-red-600 dark:text-red-400">{suggestion.enemy.name} - {suggestion.enemy.title}</strong>
-                        <span className="mx-2">→</span>
-                        <strong className="text-orange-600 dark:text-orange-400">{suggestion.counter.name} - {suggestion.counter.title}</strong>
-                      </p>
-                      <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-2 border border-blue-300 dark:border-blue-600 mb-2">
-                        <p className="text-sm font-bold text-blue-700 dark:text-blue-300">
-                          📍 Posición: {
-                            suggestion.position === 'front' ? 'Línea Delantera' :
-                              suggestion.position === 'back' ? 'Línea Trasera' :
-                                suggestion.position === 'opposite' ? 'Posición Opuesta' :
-                                  'Cualquier Posición'
-                          }
-                        </p>
-                      </div>
-                      <div className="bg-green-100 dark:bg-green-900/30 rounded-lg p-2 border border-green-300 dark:border-green-600">
-                        <p className="text-xs text-green-700 dark:text-green-300 text-center font-medium">
-                          💡 Click en {suggestion.counter.name} - {suggestion.counter.title} para asignar automáticamente
-                        </p>
-                      </div>
+                      {suggestion.targets && suggestion.targets.length > 1 && (
+                        <div className="space-y-1">
+                          {suggestion.targets.slice(0, 3).map((target, idx) => (
+                            <div key={idx} className="flex items-center gap-1">
+                              <img
+                                src={target.enemy.image}
+                                alt={target.enemy.name}
+                                className="w-4 h-4 rounded object-cover"
+                              />
+                              <span className="text-xs text-gray-600 dark:text-gray-400">
+                                {target.enemy.name}
+                              </span>
+                            </div>
+                          ))}
+                          {suggestion.targets.length > 3 && (
+                            <p className="text-xs text-gray-500 dark:text-gray-500">
+                              +{suggestion.targets.length - 3} más
+                            </p>
+                          )}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -1197,7 +1264,7 @@ const TeamBuilder = ({
               Counters de Mi Equipo
             </h5>
             <div className="space-y-3">
-              {[...team.front, ...team.back].filter(Boolean).map((character, index) => (
+              {[...(team.front || []), ...(team.back || [])].filter(Boolean).map((character, index) => (
                 <div key={`my-counter-${character.id}-${index}`} className="bg-white dark:bg-slate-800 rounded-lg p-3 border border-blue-200 dark:border-blue-700/50">
                   <div className="flex items-center gap-3 mb-2">
                     <img
@@ -1223,11 +1290,21 @@ const TeamBuilder = ({
                               src={counter.image}
                               alt={counter.name}
                               className="w-16 h-16 rounded object-cover border-2 border-white dark:border-slate-600 hover:scale-110 transition-transform"
-                              title={`${counter.name} - ${counter.title} (${counterData.position})`}
+                              title={`${counter.name} - ${counter.title} (${counterData.position}) - Efectividad: ${counterData.weight || 1}x`}
                             />
                             <div className="absolute -bottom-1 -right-1 bg-purple-500 text-white text-xs px-1 rounded text-center min-w-[12px] h-3 flex items-center justify-center leading-none">
                               {counterData.position.charAt(0).toUpperCase()}
                             </div>
+                            {/* Weight indicator */}
+                            {counterData.weight && counterData.weight !== 1 && (
+                              <div className={`absolute -top-1 -left-1 text-white text-xs px-1 rounded text-center min-w-[16px] h-4 flex items-center justify-center leading-none font-bold ${
+                                counterData.weight >= 2 ? 'bg-green-500' :
+                                counterData.weight >= 1.5 ? 'bg-yellow-500' :
+                                'bg-red-500'
+                              }`}>
+                                {counterData.weight}x
+                              </div>
+                            )}
                           </div>
                         ) : null;
                       })}
@@ -1243,7 +1320,7 @@ const TeamBuilder = ({
                 </div>
               ))}
 
-              {[...team.front, ...team.back].filter(Boolean).length === 0 && (
+              {[...(team.front || []), ...(team.back || [])].filter(Boolean).length === 0 && (
                 <div className="text-center text-gray-500 dark:text-slate-400 py-8">
                   <p>Agrega personajes a tu equipo para ver sus counters</p>
                 </div>
@@ -1257,7 +1334,7 @@ const TeamBuilder = ({
               Counters del Equipo Enemigo
             </h5>
             <div className="space-y-3">
-              {[...enemyTeam.front, ...enemyTeam.back].filter(Boolean).map((character, index) => (
+              {[...(enemyTeam.front || []), ...(enemyTeam.back || [])].filter(Boolean).map((character, index) => (
                 <div key={`enemy-counter-${character.id}-${index}`} className="bg-white dark:bg-slate-800 rounded-lg p-3 border border-red-200 dark:border-red-700/50">
                   <div className="flex items-center gap-3 mb-2">
                     <img
@@ -1283,11 +1360,21 @@ const TeamBuilder = ({
                               src={counter.image}
                               alt={counter.name}
                               className="w-16 h-16 rounded object-cover border-2 border-white dark:border-slate-600 hover:scale-110 transition-transform"
-                              title={`${counter.name} - ${counter.title} (${counterData.position})`}
+                              title={`${counter.name} - ${counter.title} (${counterData.position}) - Efectividad: ${counterData.weight || 1}x`}
                             />
                             <div className="absolute -bottom-1 -right-1 bg-purple-500 text-white text-xs px-1 rounded text-center min-w-[12px] h-3 flex items-center justify-center leading-none">
                               {counterData.position.charAt(0).toUpperCase()}
                             </div>
+                            {/* Weight indicator */}
+                            {counterData.weight && counterData.weight !== 1 && (
+                              <div className={`absolute -top-1 -left-1 text-white text-xs px-1 rounded text-center min-w-[16px] h-4 flex items-center justify-center leading-none font-bold ${
+                                counterData.weight >= 2 ? 'bg-green-500' :
+                                counterData.weight >= 1.5 ? 'bg-yellow-500' :
+                                'bg-red-500'
+                              }`}>
+                                {counterData.weight}x
+                              </div>
+                            )}
                           </div>
                         ) : null;
                       })}
@@ -1303,7 +1390,7 @@ const TeamBuilder = ({
                 </div>
               ))}
 
-              {[...enemyTeam.front, ...enemyTeam.back].filter(Boolean).length === 0 && (
+              {[...(enemyTeam.front || []), ...(enemyTeam.back || [])].filter(Boolean).length === 0 && (
                 <div className="text-center text-gray-500 dark:text-slate-400 py-8">
                   <p>Agrega personajes al equipo enemigo para ver sus counters</p>
                 </div>

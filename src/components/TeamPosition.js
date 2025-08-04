@@ -46,7 +46,11 @@ const TeamPosition = ({
       return `${position === 'front' ? `F${index + 1}` : `B${index + 3}`}`;
     }
 
-    const counterNames = suggestedCounters.map(s => `${s.counter.name} - ${s.counter.title}`).join(', ');
+    const counterNames = suggestedCounters.map(s => {
+      const weight = s.weight || 1;
+      const weightText = weight !== 1 ? ` (${weight}x)` : '';
+      return `${s.counter.name}${weightText}`;
+    }).join(', ');
     return `Sugerido: ${counterNames}`;
   };
 
@@ -333,6 +337,15 @@ const TeamPosition = ({
             <div className="mt-2">
               <span className={`${size === 'large' ? 'text-sm' : 'text-xs'} text-yellow-600 dark:text-yellow-400 font-bold bg-yellow-100 dark:bg-yellow-900/30 px-2 py-1 rounded-lg border border-yellow-300 dark:border-yellow-600 leading-tight`}>
                 ¡Counter!
+                {suggestedCounters[0] && suggestedCounters[0].weight && suggestedCounters[0].weight !== 1 && (
+                  <span className={`ml-1 px-1 rounded text-xs ${
+                    suggestedCounters[0].weight >= 2 ? 'bg-green-500 text-white' :
+                    suggestedCounters[0].weight >= 1.5 ? 'bg-yellow-500 text-white' :
+                    'bg-red-500 text-white'
+                  }`}>
+                    {suggestedCounters[0].weight}x
+                  </span>
+                )}
               </span>
             </div>
           )}

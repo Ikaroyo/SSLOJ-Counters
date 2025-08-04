@@ -20,18 +20,22 @@
     "counters": [
       {
         "id": "55202",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "15101",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55305",
+        "weight": 1,
         "position": "any"
       }
     ],
@@ -48,14 +52,17 @@
     "counters": [
       {
         "id": "55301",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "15302",
+        "weight": 1,
         "position": "any"
       }
     ],
@@ -72,18 +79,22 @@
     "counters": [
       {
         "id": "55206",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "65206",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "35202",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55305",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -119,18 +130,22 @@
     "counters": [
       {
         "id": "15302",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "34303",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "65304",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55201",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -146,18 +161,22 @@
     "counters": [
       {
         "id": "55303",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55201",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55305",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -173,18 +192,22 @@
     "counters": [
       {
         "id": "15302",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55305",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "34303",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55202",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -220,18 +243,22 @@
     "counters": [
       {
         "id": "14302",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55306",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "65304",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "23101",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -247,18 +274,22 @@
     "counters": [
       {
         "id": "15302",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55101",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55306",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55302",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -274,18 +305,22 @@
     "counters": [
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55306",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55101",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "35201",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -301,18 +336,22 @@
     "counters": [
       {
         "id": "34303",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55202",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55301",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55305",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -328,18 +367,22 @@
     "counters": [
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55306",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55101",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "35201",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -355,10 +398,12 @@
     "counters": [
       {
         "id": "55202",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "25302",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -414,18 +459,22 @@
     "counters": [
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "34303",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55304",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55305",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -451,18 +500,22 @@
     "counters": [
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55202",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "25301",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55204",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -488,14 +541,17 @@
     "counters": [
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55305",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55303",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -511,18 +567,22 @@
     "counters": [
       {
         "id": "55307",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "34303",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "65304",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55305",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -548,18 +608,22 @@
     "counters": [
       {
         "id": "15302",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "65304",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55305",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -705,18 +769,22 @@
     "counters": [
       {
         "id": "65304",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "15302",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55201",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -732,18 +800,22 @@
     "counters": [
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55101",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "14302",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55202",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -859,18 +931,22 @@
     "counters": [
       {
         "id": "55303",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55306",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "34303",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "65304",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -886,18 +962,22 @@
     "counters": [
       {
         "id": "55101",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "15302",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55305",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55302",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -953,18 +1033,22 @@
     "counters": [
       {
         "id": "25301",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "15302",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55302",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -980,18 +1064,22 @@
     "counters": [
       {
         "id": "55302",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "65303",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "34303",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -1007,18 +1095,22 @@
     "counters": [
       {
         "id": "55201",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "25101",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "23101",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "35201",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -1034,18 +1126,22 @@
     "counters": [
       {
         "id": "34303",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "65304",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "25301",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "15302",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -1101,18 +1197,22 @@
     "counters": [
       {
         "id": "55306",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55305",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55302",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "15302",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -1128,18 +1228,22 @@
     "counters": [
       {
         "id": "55303",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55306",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "25201",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "25301",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -1215,18 +1319,22 @@
     "counters": [
       {
         "id": "34303",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55301",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55305",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "35301",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -1252,18 +1360,22 @@
     "counters": [
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "65304",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "25301",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "15302",
+        "weight": 1,
         "position": "any"
       }
     ]
@@ -1319,18 +1431,22 @@
     "counters": [
       {
         "id": "55203",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "55306",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "25301",
+        "weight": 1,
         "position": "any"
       },
       {
         "id": "15302",
+        "weight": 1,
         "position": "any"
       }
     ]
